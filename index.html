@@ -1,5 +1,76 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head><meta charset="UTF-8"><title>Welcome</title></head>
-<body><h1>你好，这是我的主页！</h1></body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yi Zhu – Personal Homepage</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Insert into <head> -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX'); // Replace with your GA code
+  </script>
+  <iframe src="CV_Yi_ZHU.pdf" width="100%" height="600px"></iframe>
+
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <img src="avatar.jpg" alt="Yi Zhu Portrait" style="width:150px;border-radius:50%;margin-bottom:1rem;">
+    <p>I am Yi Zhu, a PhD candidate in Signal and Image Processing at the CREATIS Laboratory, University of Lyon. My research focuses on digital twin modeling in dentistry through the fusion of CBCT and IOS data.</p>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <ul>
+      <li><strong>PhD in Signal and Image Processing</strong>, CREATIS Laboratory, University of Lyon (Oct 2024 – Present)</li>
+      <li><strong>Diplôme d’Ingénieur, Electrical Engineering</strong>, INSA Lyon (Sep 2019 – Aug 2024)</li>
+      <li><strong>Exchange Student, Electrical Engineering</strong>, POSTECH, South Korea (Sep 2022 – Jun 2023)</li>
+    </ul>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <h3>Fusion of IOS and CBCT</h3>
+    <p>Developing advanced segmentation models to fuse low-resolution CBCT with high-resolution intraoral scans, enabling high-precision digital twins of dental anatomy.</p>
+    <h3>Evaluation of Deep Learning for Medical Image Segmentation</h3>
+    <p>Benchmarking and optimizing models such as YOLOv8/v9, UNeXt, DETR/UNETR, and nnU-Net for multiple sclerosis lesion segmentation in FLAIR MRI.</p>
+    <p><em>Published:</em> ICSP 2024 – “Comparative Analysis of Three Advanced Deep Learning Algorithms for Multiple Sclerosis Lesion Segmentation in FLAIR MRI.”</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p>PyTorch, TensorFlow, MONAI, scikit-learn, pandas, NumPy, Nibabel<br>
+    Languages: English (IELTS 6.5), French (C1), Chinese (Native)</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <ul>
+      <li>Phone: +33 (0)7 66 07 81 88</li>
+      <li>Email: <a href="mailto:yi.zhu@creatis.insa-lyon.fr">yi.zhu@creatis.insa-lyon.fr</a></li>
+      <li><a href="https://www.linkedin.com/in/zhuyi0308/" target="_blank">LinkedIn</a></li>
+      <li><a href="CV_Yi_ZHU.pdf" target="_blank">Download full CV (PDF)</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2025 Yi Zhu
+  </footer>
+</body>
 </html>
+
