@@ -1,77 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Yi Zhu – Personal Homepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yi Zhu – PhD Student</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Google tag (gtag.js) -->
+  <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLKLDHKZEE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-  
     gtag('config', 'G-MLKLDHKZEE');
   </script>
-
-
 </head>
+
 <body>
-  <header>
+  <!-- Floating Decorations -->
+  <div class="floating-decoration sun">☀️</div>
+  <div class="floating-decoration star">⭐</div>
+
+  <div class="container">
+    <!-- Navigation -->
     <nav>
-      <ul>
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#skills">Skills</a></li>
+        <li><a href="#publications">Publications</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
     </nav>
-  </header>
 
-  <section id="about">
-    <h2>About</h2>
-    <img src="avatar.jpg" alt="Yi Zhu Portrait" style="width:150px;border-radius:50%;margin-bottom:1rem;">
-    <p>I am Yi Zhu, a PhD candidate in Signal and Image Processing at the CREATIS Laboratory, University of Lyon. My research focuses on digital twin modeling in dentistry through the fusion of CBCT and IOS data.</p>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero page-content">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>I'm a</h1>
+          <p class="subtitle">PhD Student 🎓</p>
+          <p class="tagline">
+            at CREATIS Lab, Lyon<br>
+            <span class="small">but</span><br>
+            sometimes want to be <span class="highlight" id="adjective">a peaceful</span>
+            <span id="noun">croissant 🥐</span>
+          </p>
+        </div>
+        <div class="profile-image-container" onclick="changeImage()">
+          <img src="avatar.jpg" alt="Yi Zhu" class="profile-image" id="profile-img">
+          <p class="profile-caption" id="img-caption">This is me!</p>
+        </div>
+      </div>
+    </section>
 
-  <section id="education">
-    <h2>Education</h2>
-    <ul>
-      <li><strong>PhD in Signal and Image Processing</strong>, CREATIS Laboratory, University of Lyon (Oct 2024 – Present)</li>
-      <li><strong>Diplôme d’Ingénieur, Electrical Engineering</strong>, INSA Lyon (Sep 2019 – Aug 2024)</li>
-      <li><strong>Exchange Student, Electrical Engineering</strong>, POSTECH, South Korea (Sep 2022 – Jun 2023)</li>
-    </ul>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="page-content">
+      <h2 class="section-title">About Me</h2>
+      <div class="bio-content">
+        <p>
+          My name is <span class="name">Yi Zhu</span>, and I am a PhD candidate in Signal and Image Processing
+          at the <span class="name">CREATIS Laboratory</span>, University of Lyon, France.
+        </p>
+        <p>
+          My research focuses on <strong>digital twin modeling in dentistry</strong> through the fusion of
+          CBCT (Cone Beam CT) and IOS (Intraoral Scan) data. I develop deep learning methods to combine
+          low-resolution volumetric data with high-resolution surface scans.
+        </p>
+      </div>
 
-  <section id="research">
-    <h2>Research</h2>
-    <h3>Fusion of IOS and CBCT</h3>
-    <p>Developing advanced segmentation models to fuse low-resolution CBCT with high-resolution intraoral scans, enabling high-precision digital twins of dental anatomy.</p>
-    <h3>Evaluation of Deep Learning for Medical Image Segmentation</h3>
-    <p>Benchmarking and optimizing models such as YOLOv8/v9, UNeXt, DETR/UNETR, and nnU-Net for multiple sclerosis lesion segmentation in FLAIR MRI.</p>
-    <p><em>Published:</em> ICSP 2024 – “Comparative Analysis of Three Advanced Deep Learning Algorithms for Multiple Sclerosis Lesion Segmentation in FLAIR MRI.”</p>
-  </section>
+      <h3 class="section-title" style="font-size: 2rem; margin-top: 2rem;">Education</h3>
+      <ul class="education-list">
+        <li>
+          <span class="degree">PhD in Signal and Image Processing</span><br>
+          <span class="school">CREATIS Laboratory, University of Lyon</span><br>
+          <span class="period">Oct 2024 – Present</span>
+        </li>
+        <li>
+          <span class="degree">Diplôme d'Ingénieur, Electrical Engineering</span><br>
+          <span class="school">INSA Lyon</span><br>
+          <span class="period">Sep 2019 – Aug 2024</span>
+        </li>
+        <li>
+          <span class="degree">Exchange Student, Electrical Engineering</span><br>
+          <span class="school">POSTECH, South Korea</span><br>
+          <span class="period">Sep 2022 – Jun 2023</span>
+        </li>
+      </ul>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <p>PyTorch, TensorFlow, MONAI, scikit-learn, pandas, NumPy, Nibabel<br>
-    Languages: English (IELTS 6.5), French (C1), Chinese (Native)</p>
-  </section>
+      <h3 class="section-title" style="font-size: 2rem; margin-top: 2rem;">Skills</h3>
+      <div class="skills-grid">
+        <span class="skill-tag">PyTorch</span>
+        <span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">MONAI</span>
+        <span class="skill-tag">scikit-learn</span>
+        <span class="skill-tag">3D Vision</span>
+        <span class="skill-tag">Medical Imaging</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C++</span>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <ul>
-      <li>Phone: +33 (0)7 66 07 81 88</li>
-      <li>Email: <a href="mailto:yi.zhu@creatis.insa-lyon.fr">yi.zhu@creatis.insa-lyon.fr</a></li>
-      <li><a href="https://www.linkedin.com/in/zhuyi0308/" target="_blank">LinkedIn</a></li>
-      <li><a href="CV_Yi_ZHU.pdf" target="_blank">Download full CV (PDF)</a></li>
-    </ul>
-  </section>
+    <!-- Publications Section -->
+    <section id="publications" class="page-content">
+      <h2 class="section-title">Publications</h2>
+      <p style="font-size: 1.3rem; margin-bottom: 2rem;">
+        A collection of <span class="highlight" id="pub-adjective">cool</span> things I wrote.
+      </p>
 
-  <footer>
-    © 2025 Yi Zhu
-  </footer>
+      <div class="publication-list">
+        <div class="publication-item">
+          <span class="publication-venue">ICSP 2024</span>
+          <h3 class="publication-title">Comparative Analysis of Three Advanced Deep Learning Algorithms for Multiple
+            Sclerosis Lesion Segmentation in FLAIR MRI</h3>
+          <p class="publication-authors">Benchmarking and optimizing models such as YOLOv8/v9, UNeXt, DETR/UNETR, and
+            nnU-Net.</p>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-venue">Ongoing 2025</span>
+          <h3 class="publication-title">DeepDentalFusion: Surface Deformation Learning for CBCT-IOS Dental Mesh Fusion
+          </h3>
+          <p class="publication-authors">A novel approach that avoids SDF computation by working directly on mesh
+            surfaces.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-content">
+      <h2 class="section-title">Contact</h2>
+      <ul class="contact-list">
+        <li>📧 <a href="mailto:yi.zhu@creatis.insa-lyon.fr">yi.zhu@creatis.insa-lyon.fr</a></li>
+        <li>📱 +33 (0)7 66 07 81 88</li>
+        <li>🔗 <a href="https://www.linkedin.com/in/zhuyi0308/" target="_blank">LinkedIn</a></li>
+        <li>💻 <a href="https://github.com/avalanchezy" target="_blank">GitHub</a></li>
+      </ul>
+      <a href="CV_Yi_ZHU.pdf" class="cv-button" target="_blank">📄 Download CV</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p class="footer-fun">
+        That's all for now!<br>
+        Back to being a <span class="emoji">🥐</span>
+      </p>
+      <p>© 2025 Yi Zhu</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-</html>
 
+</html>
