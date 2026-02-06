@@ -478,3 +478,30 @@ footer {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+
+/* === Education Link Styling === */
+/* 默认状态：继承文字颜色，无下划线，底部加虚线提示 */
+.school a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted #888; /* 淡淡的虚线表示这是个链接 */
+    transition: all 0.3s ease;
+}
+
+/* 悬停状态：变色并显示实线 */
+.school a:hover {
+    color: #e67e22; /* 这种焦橙色很适合你的“牛角包”主题 */
+    border-bottom: 1px solid #e67e22;
+    background-color: rgba(230, 126, 34, 0.1); /* 微微的背景色高亮 */
+}
+
+/* 适配暗黑模式 (如果你有 dark-mode 类) */
+body.dark-mode .school a {
+    border-bottom: 1px dotted #aaa;
+}
+body.dark-mode .school a:hover {
+    color: #f1c40f; /* 暗黑模式下用明黄色 */
+    border-bottom: 1px solid #f1c40f;
+    background-color: rgba(241, 196, 15, 0.1);
+}
