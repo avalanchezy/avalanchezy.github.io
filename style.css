@@ -480,28 +480,49 @@ footer {
 }
 
 
+/* ... 前面的代码保持不变 ... */
+
 /* === Education Link Styling === */
 /* 默认状态：继承文字颜色，无下划线，底部加虚线提示 */
 .school a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px dotted #888; /* 淡淡的虚线表示这是个链接 */
-    transition: all 0.3s ease;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted #888;
+  transition: all 0.3s ease;
 }
 
 /* 悬停状态：变色并显示实线 */
 .school a:hover {
-    color: #e67e22; /* 这种焦橙色很适合你的“牛角包”主题 */
-    border-bottom: 1px solid #e67e22;
-    background-color: rgba(230, 126, 34, 0.1); /* 微微的背景色高亮 */
+  color: #e67e22; /* 焦橙色 */
+  border-bottom: 1px solid #e67e22;
+  background-color: rgba(230, 126, 34, 0.1);
 }
 
-/* 适配暗黑模式 (如果你有 dark-mode 类) */
-body.dark-mode .school a {
-    border-bottom: 1px dotted #aaa;
+/* 适配暗黑模式 (注意：这里改回了 body.dark) */
+body.dark .school a {
+  border-bottom: 1px dotted #aaa;
 }
-body.dark-mode .school a:hover {
-    color: #f1c40f; /* 暗黑模式下用明黄色 */
-    border-bottom: 1px solid #f1c40f;
-    background-color: rgba(241, 196, 15, 0.1);
+body.dark .school a:hover {
+  color: #f1c40f; /* 明黄色 */
+  border-bottom: 1px solid #f1c40f;
+  background-color: rgba(241, 196, 15, 0.1);
+}
+
+/* === [PDF] Link Styling (新增建议) === */
+.publication-link {
+  font-size: 0.9rem;
+  margin-left: 8px;
+  color: var(--accent-emerald); /* 使用你的主题绿 */
+  font-weight: normal; /* 标题是粗体，PDF 链接可以用细体区分 */
+  text-decoration: none;
+  border: 1px solid var(--accent-emerald);
+  padding: 1px 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.publication-link:hover {
+  background-color: var(--accent-emerald);
+  color: white;
+  text-decoration: none;
 }
