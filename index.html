@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&family=Schoolbell&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Gowun+Dodum&family=Noto+Sans+SC:wght@400;500;600&family=Yomogi&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260922-5lang">
+  <link rel="stylesheet" href="style.css?v=20260922-photos">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLKLDHKZEE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -18,10 +18,10 @@
     gtag('js', new Date());
     gtag('config', 'G-MLKLDHKZEE');
   </script>
-  <script src="translations.js?v=20260922-5lang" defer></script>
-  <script src="locales/ja.js?v=20260922-5lang" defer></script>
-  <script src="locales/ko.js?v=20260922-5lang" defer></script>
-  <script src="script.js?v=20260922-5lang" defer></script>
+  <script src="translations.js?v=20260922-photos" defer></script>
+  <script src="locales/ja.js?v=20260922-photos" defer></script>
+  <script src="locales/ko.js?v=20260922-photos" defer></script>
+  <script src="script.js?v=20260922-photos" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
@@ -63,7 +63,7 @@
           <a class="button button-primary" href="#about"><span data-i18n="aboutButton">A little about me</span> <span aria-hidden="true">↗</span></a>
           <a class="text-link" href="#contact"><span data-i18n="helloButton">Say hello</span> <span aria-hidden="true">↗</span></a>
         </div>
-        <button class="mood-button" id="mood-button" type="button" aria-label="Off-duty daydream: change my pastry" data-i18n-aria="moodAria">
+        <button class="mood-button" id="mood-button" type="button" aria-label="Off-duty daydream: draw a mood" data-i18n-aria="moodAria">
           <span class="mood-label" data-i18n="moodLabel">Off-duty daydream</span>
           <span class="mood-value"><span id="mood-text" aria-live="polite">a peaceful croissant 🥐</span><span class="mood-shuffle" aria-hidden="true">↻</span></span>
         </button>
@@ -76,11 +76,11 @@
         <span class="handwritten collage-note" data-i18n="collageNote">a little curiosity<br>goes a long way.</span>
         <figure class="portrait-frame">
           <span class="paper-tape" aria-hidden="true"></span>
-          <button id="portrait-button" class="portrait-button" type="button" aria-label="Say hello to Yi" data-i18n-aria="portraitAria"><img src="avatar.jpg" alt="Portrait of Yi Zhu" data-i18n-alt="portraitAlt" width="1050" height="1350" fetchpriority="high"></button>
+          <button id="portrait-button" class="portrait-button" type="button" aria-label="Say hello to Yi" data-i18n-aria="portraitAria"><img src="assets/photos/sun.webp" alt="Portrait of Yi Zhu" data-i18n-alt="portraitAlt" width="1122" height="1402" fetchpriority="high"></button>
           <figcaption id="portrait-caption" class="handwritten" aria-live="polite">yes, that's me.</figcaption>
         </figure>
         <div class="location-stamp"><span aria-hidden="true">↗</span> <span data-i18n="basedIn">BASED IN</span><strong data-i18n="location">LYON, FR</strong></div>
-        <div class="personal-note"><span class="note-pin" aria-hidden="true"></span><span class="eyebrow" data-i18n="noteLabel">Note to self</span><p data-i18n="noteBody">Stay curious.<br><em>Take a pastry break.</em></p><span class="handwritten" data-i18n="noteFooter">leave room for little joys.</span></div>
+        <button class="personal-note" id="note-button" type="button" aria-label="Draw another little note" data-i18n-aria="noteAria"><span class="note-pin" aria-hidden="true"></span><span class="note-shuffle" aria-hidden="true">↻</span><span class="eyebrow" data-i18n="noteLabel">Note to self</span><span class="note-body" id="note-text" aria-live="polite">Stay curious.<br><em>Take a pastry break.</em></span><span class="handwritten" data-i18n="noteFooter">leave room for little joys.</span></button>
         <svg class="arrow-doodle" viewBox="0 0 100 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5c70-8 90 50 20 50-36 0-7-39 22-20 16 11 16 30 18 37m-10-7 11 9 8-13"/></svg>
       </div>
       <a class="scroll-cue" href="#about"><span aria-hidden="true">↓</span> <span data-i18n="scrollCue">A little more about me</span></a>
@@ -93,6 +93,36 @@
         <p class="lead" data-i18n="aboutLead">I'm Yi Zhu, currently based in Lyon, France, and pursuing a PhD at the <a href="https://www.creatis.insa-lyon.fr/en/" target="_blank" rel="noopener noreferrer">CREATIS Laboratory</a>, <a href="https://www.universite-lyon.fr/" target="_blank" rel="noopener noreferrer">University of Lyon</a>.</p>
         <p data-i18n="aboutJourney">I’m from Changzhou in Jiangsu, China. My studies have taken me to France, Korea and Japan. This page brings together a few stops along the way and some of my work.</p>
         <p data-i18n="aboutWork">On the work side, I study <strong>medical imaging and 3D deep learning</strong> as part of my PhD in Signal and Image Processing.</p>
+      </div>
+    </section>
+
+    <section id="life" class="life-section section-block" aria-labelledby="gallery-title">
+      <div class="gallery-heading reveal">
+        <div class="section-heading"><p class="eyebrow section-index" data-i18n="galleryIndex">Off the clock</p><h2 id="gallery-title" data-i18n="galleryTitle">Life, in<br><em>little frames.</em></h2></div>
+        <div class="gallery-copy"><p data-i18n="galleryIntro">A few moments between the pages of my CV.</p><p id="gallery-hint" class="handwritten" data-i18n="galleryHint">Click a photo for the full frame.</p></div>
+      </div>
+      <div class="photo-gallery reveal">
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-photo="sun" aria-haspopup="dialog" aria-labelledby="photo-sun-title" aria-describedby="photo-sun-caption"><img src="assets/photos/sun.webp" alt="Yi Zhu in a black coat, lit by golden sunlight." data-i18n-alt="photoSunAlt" loading="lazy" width="1122" height="1402"></button>
+          <figcaption><strong id="photo-sun-title" data-i18n="photoSunTitle">A little golden hour</strong><span id="photo-sun-caption" data-i18n="photoSunCaption">Borrowing a little warmth from the sun.</span></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <button class="photo-button" type="button" data-photo="england" aria-haspopup="dialog" aria-labelledby="photo-england-title" aria-describedby="photo-england-caption"><img src="assets/photos/england.webp" alt="Yi Zhu by an England border sign." data-i18n-alt="photoEnglandAlt" loading="lazy" width="1122" height="1402"></button>
+          <figcaption><strong id="photo-england-title" data-i18n="photoEnglandTitle">A border stop</strong><span id="photo-england-caption" data-i18n="photoEnglandCaption">One little pause at the edge of England.</span></figcaption>
+        </figure>
+        <figure class="photo-card photo-card-cat">
+          <span class="cat-sticker" aria-hidden="true">🐾</span>
+          <button class="photo-button" type="button" data-photo="cat" aria-haspopup="dialog" aria-labelledby="photo-cat-title" aria-describedby="photo-cat-caption"><img src="assets/photos/cat.webp" alt="Cat portrait." data-i18n-alt="photoCatAlt" loading="lazy" width="1122" height="1402"></button>
+          <figcaption><strong id="photo-cat-title" data-i18n="photoCatTitle">The actual boss</strong><span id="photo-cat-caption" data-i18n="photoCatCaption">Clearly the most important face here.</span></figcaption>
+        </figure>
+        <figure class="photo-card photo-card-wide">
+          <button class="photo-button" type="button" data-photo="rome" aria-haspopup="dialog" aria-labelledby="photo-rome-title" aria-describedby="photo-rome-caption"><img src="assets/photos/rome.webp" alt="Yi Zhu at the Mouth of Truth in Rome." data-i18n-alt="photoRomeAlt" loading="lazy" width="1448" height="1086"></button>
+          <figcaption><strong id="photo-rome-title" data-i18n="photoRomeTitle">A moment of truth</strong><span id="photo-rome-caption" data-i18n="photoRomeCaption">The Mouth of Truth gets a visitor.</span></figcaption>
+        </figure>
+        <figure class="photo-card photo-card-wide">
+          <button class="photo-button" type="button" data-photo="talk" aria-haspopup="dialog" aria-labelledby="photo-talk-title" aria-describedby="photo-talk-caption"><img src="assets/photos/talk.webp" alt="Yi Zhu giving a talk at Centrale Lyon." data-i18n-alt="photoTalkAlt" loading="lazy" width="1445" height="1088"></button>
+          <figcaption><strong id="photo-talk-title" data-i18n="photoTalkTitle">Sharing a few ideas</strong><span id="photo-talk-caption" data-i18n="photoTalkCaption">A few ideas, out loud at Centrale Lyon.</span></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -204,6 +234,16 @@
       <div class="contact-aside"><span class="handwritten" data-i18n="contactNote">always room for<br>a good conversation.</span><div class="contact-links"><a href="https://github.com/avalanchezy" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/zhuyi0308/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="CV_Yi_ZHU.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="cvLabel">Curriculum vitae</span> <span aria-hidden="true">↓</span></a><a href="tel:+33766078188">+33 (0)7 66 07 81 88 <span aria-hidden="true">↗</span></a></div></div>
     </section>
   </main>
+  <dialog id="photo-dialog" class="photo-dialog" aria-labelledby="photo-dialog-title" aria-describedby="photo-dialog-caption">
+    <div class="photo-dialog-content">
+      <button id="photo-close" class="photo-close" type="button" aria-label="Close photo" data-i18n-aria="photoCloseLabel" autofocus><span aria-hidden="true">×</span></button>
+      <img id="photo-dialog-image" alt="" width="1122" height="1402">
+      <div class="photo-dialog-footer">
+        <div class="photo-dialog-description"><h2 id="photo-dialog-title">A little golden hour</h2><p id="photo-dialog-caption">Borrowing a little warmth from the sun.</p></div>
+        <button id="photo-shuffle" class="button button-primary" type="button" data-i18n="photoShuffleLabel">Shuffle a photo</button>
+      </div>
+    </div>
+  </dialog>
   <footer class="container site-footer"><p data-i18n="footerCopyright">© 2026 Yi Zhu</p><p class="handwritten"><span data-i18n="footerNote">Back to being a croissant.</span> <span aria-hidden="true">🥐</span></p><a href="#home"><span data-i18n="backToTop">Back to top</span> <span aria-hidden="true">↑</span></a></footer>
 </body>
 </html>

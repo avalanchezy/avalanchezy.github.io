@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Xiaolai';
-  src: url('assets/fonts/xiaolai-regular.woff2') format('woff2');
+  src: url('assets/fonts/xiaolai-regular.woff2?v=20260922-photos') format('woff2');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -85,11 +85,12 @@ h1 em, h2 em { font-weight: 400; color: var(--green); }
 #mood-text { font-family: var(--hand); font-size: 17px; border-bottom: 1px dashed var(--line); }
 .mood-shuffle { color: var(--coral); display: inline-block; flex-shrink: 0; transition: transform .35s; font-size: 19px; }
 .mood-button:hover .mood-shuffle { transform: rotate(90deg); }
+.mood-button:active .mood-shuffle { transform: rotate(180deg) scale(.85); }
 .hero-collage { position: relative; min-height: 540px; }
 .portrait-frame { position: absolute; top: 51px; left: 48px; width: 266px; padding: 12px 12px 16px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); transform: rotate(5deg); transition: transform .45s; }
 .portrait-frame:hover { transform: rotate(1deg) translateY(-4px); }
 .portrait-button { display: block; background: transparent; padding: 0; width: 100%; overflow: hidden; }
-.portrait-button img { width: 100%; height: 283px; object-fit: cover; object-position: 50% 38%; filter: saturate(.8); transition: filter .4s, transform .45s; }
+.portrait-button img { width: 100%; height: 283px; object-fit: cover; object-position: 50% 35%; filter: saturate(.8); transition: filter .4s, transform .45s; }
 .portrait-button:hover img { filter: saturate(1); transform: scale(1.025); }
 .portrait-button.is-waving img { animation: portrait-hello .45s ease; }
 .portrait-frame figcaption { font-size: 18px; text-align: center; line-height: 1.4; margin-top: 14px; min-height: 25px; }
@@ -105,9 +106,14 @@ body.dark .sky-moon { opacity: 1; transform: rotate(0) scale(1); }
 .location-stamp { position: absolute; top: 255px; left: 2px; width: 98px; height: 98px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--green); border-radius: 50%; background: var(--paper); transform: rotate(-13deg); font-size: 8px; line-height: 1.6; letter-spacing: .14em; color: var(--green); pointer-events: none; }
 .location-stamp > span[aria-hidden] { font-size: 25px; line-height: 1; margin-bottom: 4px; }
 .location-stamp strong { font-size: 10px; max-width: 90%; text-align: center; line-height: 1.4; }
-.personal-note { position: absolute; top: 396px; left: 130px; width: 242px; background: var(--note); padding: 25px 23px 20px; transform: rotate(-5deg); box-shadow: 3px 5px 0 #28372c08; }
+.personal-note { position: absolute; top: 396px; left: 130px; width: 242px; background: var(--note); padding: 25px 23px 20px; transform: rotate(-5deg); box-shadow: 3px 5px 0 #28372c08; text-align: left; transition: transform .25s, box-shadow .25s; }
+.personal-note:hover { transform: rotate(-2deg) translateY(-3px); box-shadow: var(--shadow); }
+.personal-note:active { transform: rotate(-3deg) translateY(1px); }
+.note-shuffle { position: absolute; right: 13px; top: 7px; font-family: var(--sans); font-size: 17px; color: var(--coral); transition: transform .25s; }
+.personal-note:hover .note-shuffle { transform: rotate(90deg); }
+.personal-note:active .note-shuffle { transform: rotate(180deg); }
 .personal-note .eyebrow { margin-bottom: 10px; font-size: 8px; }
-.personal-note p { font-size: 24px; line-height: 1.2; font-family: var(--hand); }
+.note-body { display: block; font-size: 24px; line-height: 1.2; font-family: var(--hand); }
 .personal-note em { font-style: normal; }
 .personal-note .handwritten { font-size: 15px; display: block; margin-top: 12px; }
 .note-pin { position: absolute; width: 7px; height: 7px; background: var(--coral); border-radius: 50%; top: 10px; left: 50%; }
@@ -129,6 +135,42 @@ h2 { font-family: var(--display); font-size: clamp(34px, 4vw, 47px); font-weight
 .about-copy strong { color: var(--ink); font-weight: 550; }
 .about-copy a { text-decoration-color: var(--line); transition: text-decoration-color .2s; }
 .about-copy a:hover { text-decoration-color: var(--coral); }
+
+/* Little photographs tucked between the pages. */
+.gallery-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 55px; }
+.gallery-copy { max-width: 355px; justify-self: end; }
+.gallery-copy > p:first-child { color: var(--muted); font-size: 14px; line-height: 1.85; }
+.gallery-copy .handwritten { margin-top: 16px; color: var(--coral); font-size: 19px; line-height: 1.45; }
+.photo-gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); align-items: start; gap: 34px 26px; margin-top: 44px; padding: 9px 5px 5px; }
+.photo-card { --photo-tilt: -1.5deg; position: relative; min-width: 0; grid-column: span 2; padding: 11px 11px 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); transform: rotate(var(--photo-tilt)); transition: transform .25s, box-shadow .25s; }
+.photo-card:nth-child(2) { --photo-tilt: 1.6deg; }
+.photo-card:nth-child(3) { --photo-tilt: -.8deg; }
+.photo-card:nth-child(4) { --photo-tilt: 1deg; }
+.photo-card:nth-child(5) { --photo-tilt: -1.2deg; }
+.photo-card:first-child::before, .photo-card:nth-child(3)::before { content: ''; position: absolute; top: -12px; left: calc(50% - 33px); width: 66px; height: 24px; z-index: 1; background: #e5cd928c; transform: rotate(-8deg); clip-path: polygon(0 7%, 97% 0, 100% 90%, 3% 100%); pointer-events: none; }
+.photo-card:hover, .photo-card:focus-within { transform: rotate(0) translateY(-4px); }
+.photo-card-wide { grid-column: span 3; }
+.photo-button { display: block; width: 100%; padding: 0; background: var(--soft-green); }
+.photo-button img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.photo-button[data-photo="sun"] img { object-position: 50% 30%; }
+.photo-card-wide .photo-button img { aspect-ratio: 4 / 3; }
+.photo-card figcaption { padding: 14px 7px 0; }
+.photo-card figcaption strong { display: block; font-family: var(--hand); font-size: 22px; line-height: 1.4; font-weight: 400; }
+.photo-card figcaption > span { display: block; color: var(--muted); font-size: 11px; line-height: 1.75; margin-top: 5px; }
+.cat-sticker { position: absolute; top: -15px; right: 18px; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--note); border: 1px solid var(--line); font-size: 23px; transform: rotate(15deg); pointer-events: none; }
+.photo-dialog { width: min(940px, calc(100vw - 40px)); max-width: none; max-height: calc(100dvh - 32px); margin: auto; padding: 23px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); box-shadow: 0 25px 90px #0005; overflow: auto; }
+body.photo-open { overflow: hidden; }
+.photo-dialog::backdrop { background: #14271ee0; backdrop-filter: blur(4px); }
+.photo-dialog-content { min-width: 0; display: grid; gap: 18px; }
+.photo-close { position: absolute; top: 13px; right: 13px; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; background: var(--paper); color: var(--ink); box-shadow: var(--shadow); font-size: 29px; line-height: 1; }
+.photo-close:hover { background: var(--note); }
+#photo-dialog-image { width: 100%; height: auto; max-height: max(160px, calc(100dvh - 210px)); object-fit: contain; background: var(--paper); border-radius: 2px; }
+.photo-dialog-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px 28px; }
+.photo-dialog-description { flex: 1 1 260px; min-width: 0; }
+.photo-dialog #photo-dialog-title { font-size: 29px; line-height: 1.4; letter-spacing: 0; }
+#photo-dialog-caption { color: var(--muted); font-size: 13px; line-height: 1.8; margin-top: 5px; }
+#photo-shuffle { flex: 0 1 auto; min-height: 44px; }
+
 .section-topline { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
 .papers-note { color: var(--coral); font-size: 20px; line-height: 1.3; transform: rotate(6deg); margin-right: 16px; }
 .publication-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 33px; margin-bottom: 18px; }
@@ -213,16 +255,16 @@ html:is(:lang(zh), :lang(ja), :lang(ko)) h2 em { font-style: normal; }
 html:is(:lang(zh), :lang(ja), :lang(ko)) h2 { font-size: clamp(30px, 3.5vw, 42px); line-height: 1.4; letter-spacing: 0; }
 html:is(:lang(zh), :lang(ja), :lang(ko)) .hello-spark { margin-left: 10px; }
 html:is(:lang(zh), :lang(ja), :lang(ko)) .hero-intro { line-height: 1.8; }
-html:is(:lang(zh), :lang(ja), :lang(ko)) .personal-note p { font-size: 20px; line-height: 1.6; }
+html:is(:lang(zh), :lang(ja), :lang(ko)) .note-body { font-size: 20px; line-height: 1.6; }
 html:is(:lang(zh), :lang(ja), :lang(ko)) .eyebrow { letter-spacing: .06em; }
 html:lang(ja) .collage-note { font-size: 18px; }
-html:lang(ja) .personal-note p { font-size: 17px; }
+html:lang(ja) .note-body { font-size: 17px; }
 html:lang(ko) .handwritten, html:lang(ko) #mood-text { font-size: 22px; }
 html:lang(ko) .personal-note .handwritten { font-size: 17px; }
-html:lang(ko) .personal-note p { font-size: 24px; }
+html:lang(ko) .note-body { font-size: 24px; }
 html:lang(ko) .location-stamp { letter-spacing: 0; }
 html:lang(fr) h1 { font-size: clamp(62px, 6.6vw, 92px); }
-html:lang(fr) .personal-note p { font-size: 21px; }
+html:lang(fr) .note-body { font-size: 21px; }
 
 @media (min-width: 1300px) { .hero { column-gap: 75px; } .hero-collage { margin-left: 15px; } }
 @media (max-width: 1000px) {
@@ -273,7 +315,7 @@ html:lang(fr) .personal-note p { font-size: 21px; }
   .sky-doodle { width: 62px; top: 0; right: 0; }
   .location-stamp { width: 86px; height: 86px; left: 4px; top: 230px; }
   .personal-note { top: 353px; left: 104px; width: 214px; padding: 22px 18px 15px; }
-  .personal-note p { font-size: 20px; }
+  .note-body { font-size: 20px; }
   .personal-note .eyebrow { font-size: 8px; margin-bottom: 9px; }
   .personal-note .handwritten { font-size: 14px; }
   .arrow-doodle { left: 9px; top: 390px; width: 74px; }
@@ -284,6 +326,22 @@ html:lang(fr) .personal-note p { font-size: 21px; }
   h2 { font-size: 38px; }
   .section-index { font-size: 9px; margin-bottom: 14px; }
   .about-copy .lead { font-size: 16px; }
+  .gallery-heading { grid-template-columns: 1fr; gap: 20px; }
+  .gallery-copy { justify-self: start; max-width: 440px; }
+  .gallery-copy .handwritten { margin-top: 12px; }
+  .photo-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 27px 19px; margin-top: 28px; padding-inline: 3px; }
+  .photo-card, .photo-card-wide { grid-column: auto; padding: 8px 8px 14px; }
+  .photo-card-cat { grid-column: 1 / -1; width: min(100%, 320px); justify-self: center; }
+  .photo-card figcaption { padding: 11px 4px 0; }
+  .photo-card figcaption strong { font-size: 20px; }
+  .photo-card figcaption > span { font-size: 10px; }
+  .photo-dialog { width: calc(100vw - 24px); max-height: calc(100dvh - 24px); padding: 14px; }
+  .photo-dialog-content { gap: 14px; }
+  .photo-close { top: 9px; right: 9px; }
+  .photo-dialog-footer { gap: 14px; }
+  .photo-dialog #photo-dialog-title { font-size: 25px; }
+  #photo-dialog-image { max-height: max(160px, calc(100dvh - 235px)); }
+  #photo-shuffle { width: 100%; }
   .papers-note { display: none; }
   .publication-toolbar { margin-top: 25px; }
   .publication-item { grid-template-columns: 26px 1fr; gap: 12px; padding: 24px 0; }
@@ -318,6 +376,12 @@ html:lang(fr) .personal-note p { font-size: 21px; }
   .site-footer { flex-wrap: wrap; gap: 12px; padding-block: 27px; }
   .site-footer .handwritten { order: 3; flex-basis: 100%; font-size: 16px; text-align: center; }
 }
+@media (max-width: 480px) {
+  .photo-gallery { grid-template-columns: minmax(0, 1fr); padding-inline: 7px; gap: 29px; }
+  .photo-card, .photo-card-cat { width: 100%; grid-column: auto; padding: 10px 10px 16px; }
+  .photo-card figcaption strong { font-size: 22px; }
+  .photo-card figcaption > span { font-size: 11px; }
+}
 @media (max-width: 380px) {
   .container { width: calc(100% - 36px); }
   .mobile-menu-btn [data-i18n] { display: none; }
@@ -349,6 +413,8 @@ html:lang(fr) .personal-note p { font-size: 21px; }
   .hero { display: block; min-height: auto; padding: 20px 0 30px; }
   h1 { font-size: 60px; }
   .section-block { padding-block: 25px; }
-  .publication-item, .experience-card { break-inside: avoid; }
+  .publication-item, .experience-card, .photo-card { break-inside: avoid; }
+  .photo-card { transform: none; box-shadow: none; }
+  .photo-dialog { display: none; }
   .will-reveal { opacity: 1; transform: none; }
 }

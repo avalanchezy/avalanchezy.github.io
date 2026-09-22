@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const moodText = document.getElementById('mood-text');
     const portrait = document.getElementById('portrait-button');
     const portraitCaption = document.getElementById('portrait-caption');
+    const noteButton = document.getElementById('note-button');
+    const noteText = document.getElementById('note-text');
+    const photoButtons = [...document.querySelectorAll('.photo-button')];
+    const photoDialog = document.getElementById('photo-dialog');
+    const photoDialogImage = document.getElementById('photo-dialog-image');
+    const photoDialogTitle = document.getElementById('photo-dialog-title');
+    const photoDialogCaption = document.getElementById('photo-dialog-caption');
     const filterButtons = [...document.querySelectorAll('.filter-button')];
     const publications = [...document.querySelectorAll('.publication-item')];
     const publicationCount = document.getElementById('publication-count');
@@ -29,8 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .find(value => supportedLanguages.includes(value));
     let language = supportedLanguages.includes(savedLanguage) ? savedLanguage : browserLanguage || 'en';
     let copy = window.siteCopy[language];
-    let moodIndex = 0;
-    let captionIndex = 0;
+    const randomIndex = items => Math.floor(Math.random() * items.length);
+    let moodIndex = randomIndex(copy.moods);
+    let captionIndex = randomIndex(copy.captions);
+    let noteIndex = randomIndex(copy.notes);
+    let selectedPhoto;
     let filterYear = 'all';
     let activeSection;
     let scrollFrame = false;
@@ -105,17 +115,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     moodText.setAttribute('aria-live', 'polite');
     document.getElementById('mood-button').addEventListener('click', () => {
-        moodIndex = (moodIndex + 1) % copy.moods.length;
+        moodIndex = randomIndex(copy.moods);
         moodText.textContent = copy.moods[moodIndex];
     });
 
     portraitCaption.setAttribute('aria-live', 'polite');
     portrait.addEventListener('click', () => {
-        captionIndex = (captionIndex + 1) % copy.captions.length;
+        captionIndex = randomIndex(copy.captions);
         portraitCaption.textContent = copy.captions[captionIndex];
         if (!reducedMotion.matches) portrait.classList.add('is-waving');
     });
     portrait.addEventListener('animationend', () => portrait.classList.remove('is-waving'));
+
+    noteButton.addEventListener('click', () => {
+        noteIndex = randomIndex(copy.notes);
+        noteText.innerHTML = copy.notes[noteIndex];
+    });
+
+    function showPhoto(button) {
+        selectedPhoto = button;
+        const id = button.dataset.photo;
+        const key = `photo${id[0].toUpperCase()}${id.slice(1)}`;
+        const photo = button.querySelector('img');
+        photoDialogImage.src = photo.src;
+        photoDialogImage.width = Number(photo.getAttribute('width'));
+        photoDialogImage.height = Number(photo.getAttribute('height'));
+        photoDialogImage.alt = copy[`${key}Alt`];
+        photoDialogTitle.textContent = copy[`${key}Title`];
+        photoDialogCaption.textContent = copy[`${key}Caption`];
+    }
+
+    photoButtons.forEach(button => button.addEventListener('click', () => {
+        showPhoto(button);
+        photoDialog.showModal();
+        document.body.classList.add('photo-open');
+    }));
+    document.getElementById('photo-close').addEventListener('click', () => photoDialog.close());
+    document.getElementById('photo-shuffle').addEventListener('click', () => {
+        showPhoto(photoButtons[randomIndex(photoButtons)]);
+    });
+    photoDialog.addEventListener('click', event => {
+        if (event.target === photoDialog) photoDialog.close();
+    });
+    photoDialog.addEventListener('close', () => document.body.classList.remove('photo-open'));
 
     function filterPublications(year) {
         filterYear = year;
@@ -151,6 +193,13 @@ document.addEventListener('DOMContentLoaded', () => {
         languageSelect.value = language;
         moodText.textContent = copy.moods[moodIndex];
         portraitCaption.textContent = copy.captions[captionIndex];
+        noteText.innerHTML = copy.notes[noteIndex];
+        photoButtons.forEach(button => {
+            const id = button.dataset.photo;
+            const key = `photo${id[0].toUpperCase()}${id.slice(1)}Title`;
+            button.setAttribute('aria-label', copy.photoOpenLabel.replace('{title}', copy[key]));
+        });
+        if (photoDialog.open) showPhoto(selectedPhoto);
         setTheme(document.body.classList.contains('dark'));
         setMenu(menu.classList.contains('is-open'));
         filterPublications(filterYear);
