@@ -1,20 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const themeButton = document.querySelector('.theme-toggle');
+    const menuButton = document.querySelector('.mobile-menu-btn');
+    const menu = document.getElementById('nav-links');
+    const navLinks = [...menu.querySelectorAll('a[href^="#"]')];
+    const sections = navLinks.map(link => document.getElementById(link.hash.slice(1)));
+    const languageButtons = [...document.querySelectorAll('.language-button')];
+    const moodText = document.getElementById('mood-text');
+    const portrait = document.getElementById('portrait-button');
+    const portraitCaption = document.getElementById('portrait-caption');
+    const filterButtons = [...document.querySelectorAll('.filter-button')];
+    const publications = [...document.querySelectorAll('.publication-item')];
+    const publicationCount = document.getElementById('publication-count');
+    const revealElements = [...document.querySelectorAll('.reveal')];
+    const supportedLanguages = ['en', 'zh', 'fr'];
+
     let savedTheme;
+    let savedLanguage;
     try {
         savedTheme = localStorage.getItem('theme');
+        savedLanguage = localStorage.getItem('language');
     } catch (_) {
         // The page still works when browser storage is unavailable.
     }
 
+    const browserLanguage = (navigator.languages || [navigator.language])
+        .map(value => value.toLowerCase().split('-')[0])
+        .find(value => supportedLanguages.includes(value));
+    let language = supportedLanguages.includes(savedLanguage) ? savedLanguage : browserLanguage || 'en';
+    let copy = window.siteCopy[language];
+    let moodIndex = 0;
+    let captionIndex = 0;
+    let filterYear = 'all';
+    let activeSection;
+    let scrollFrame = false;
+    let revealObserver;
+
     function setTheme(dark) {
         document.body.classList.toggle('dark', dark);
         themeButton.querySelector('.theme-icon').textContent = dark ? '☼' : '☾';
-        themeButton.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
+        themeButton.setAttribute('aria-label', copy[dark ? 'themeLight' : 'themeDark']);
     }
 
-    setTheme(savedTheme === 'dark' || (savedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches));
     themeButton.addEventListener('click', () => {
         const dark = !document.body.classList.contains('dark');
         setTheme(dark);
@@ -25,20 +52,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const menuButton = document.querySelector('.mobile-menu-btn');
-    const menu = document.getElementById('nav-links');
-    const navLinks = [...menu.querySelectorAll('a[href^="#"]')];
-
     function setMenu(open) {
         menu.classList.toggle('is-open', open);
         menuButton.setAttribute('aria-expanded', String(open));
-        menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuButton.setAttribute('aria-label', copy[open ? 'menuClose' : 'menuOpen']);
     }
 
     menuButton.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
     navLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
     document.addEventListener('click', event => {
-        if (!menu.contains(event.target) && !menuButton.contains(event.target)) setMenu(false);
+        if (!menu.contains(event.target) && !menuButton.contains(event.target) && !event.target.closest('.language-switch')) {
+            setMenu(false);
+        }
     });
     document.addEventListener('keydown', event => {
         if (event.key === 'Escape' && menu.classList.contains('is-open')) {
@@ -49,10 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.matchMedia('(min-width: 761px)').addEventListener('change', event => {
         if (event.matches) setMenu(false);
     });
-
-    const sections = navLinks.map(link => document.getElementById(link.hash.slice(1)));
-    let activeSection;
-    let scrollFrame = false;
 
     function updateActiveSection() {
         scrollFrame = false;
@@ -81,61 +102,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', queueActiveSectionUpdate, { passive: true });
     window.addEventListener('resize', queueActiveSectionUpdate);
-    updateActiveSection();
 
-    const moods = [
-        'a peaceful croissant 🥐',
-        'a curious baguette 🥖',
-        'a slightly caffeinated cookie 🍪',
-        'a daydreaming dumpling 🥟',
-        'a deadline-powered pretzel 🥨',
-        'a very optimistic pancake 🥞'
-    ];
-    const moodText = document.getElementById('mood-text');
-    let moodIndex = 0;
     moodText.setAttribute('aria-live', 'polite');
     document.getElementById('mood-button').addEventListener('click', () => {
-        moodIndex = (moodIndex + 1) % moods.length;
-        moodText.textContent = moods[moodIndex];
+        moodIndex = (moodIndex + 1) % copy.moods.length;
+        moodText.textContent = copy.moods[moodIndex];
     });
 
-    const portrait = document.getElementById('portrait-button');
-    const portraitCaption = document.getElementById('portrait-caption');
-    const captions = [
-        "yes, that's me.",
-        'hello from Lyon!',
-        'still curious, still me.',
-        'probably a croissant.'
-    ];
-    let captionIndex = 0;
     portraitCaption.setAttribute('aria-live', 'polite');
     portrait.addEventListener('click', () => {
-        captionIndex = (captionIndex + 1) % captions.length;
-        portraitCaption.textContent = captions[captionIndex];
+        captionIndex = (captionIndex + 1) % copy.captions.length;
+        portraitCaption.textContent = copy.captions[captionIndex];
         if (!reducedMotion.matches) portrait.classList.add('is-waving');
     });
     portrait.addEventListener('animationend', () => portrait.classList.remove('is-waving'));
 
-    const filterButtons = [...document.querySelectorAll('.filter-button')];
-    const publications = [...document.querySelectorAll('.publication-item')];
-    const publicationCount = document.getElementById('publication-count');
-
     function filterPublications(year) {
+        filterYear = year;
         let count = 0;
         publications.forEach(publication => {
             publication.hidden = year !== 'all' && publication.dataset.year !== year;
             if (!publication.hidden) count++;
         });
         filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.year === year)));
-        publicationCount.textContent = `${count} ${count === 1 ? 'paper' : 'papers'}${year === 'all' ? '' : ` from ${year}`}`;
+        const countKey = year === 'all'
+            ? (count === 1 ? 'countOne' : 'countMany')
+            : (count === 1 ? 'countYearOne' : 'countYearMany');
+        publicationCount.textContent = copy[countKey].replace('{count}', count).replace('{year}', year);
         queueActiveSectionUpdate();
     }
 
     filterButtons.forEach(button => button.addEventListener('click', () => filterPublications(button.dataset.year)));
-    filterPublications('all');
 
-    const revealElements = [...document.querySelectorAll('.reveal')];
-    let revealObserver;
+    function applyLanguage(nextLanguage) {
+        language = nextLanguage;
+        copy = window.siteCopy[language];
+        document.documentElement.lang = language === 'zh' ? 'zh-CN' : language;
+        document.title = copy.pageTitle;
+        document.querySelector('meta[name="description"]').content = copy.pageDescription;
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            element.innerHTML = copy[element.dataset.i18n];
+        });
+        [['aria', 'aria-label'], ['title', 'title'], ['alt', 'alt']].forEach(([key, attribute]) => {
+            document.querySelectorAll(`[data-i18n-${key}]`).forEach(element => {
+                element.setAttribute(attribute, copy[element.getAttribute(`data-i18n-${key}`)]);
+            });
+        });
+        languageButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
+        moodText.textContent = copy.moods[moodIndex];
+        portraitCaption.textContent = copy.captions[captionIndex];
+        setTheme(document.body.classList.contains('dark'));
+        setMenu(menu.classList.contains('is-open'));
+        filterPublications(filterYear);
+    }
+
+    languageButtons.forEach(button => button.addEventListener('click', () => {
+        applyLanguage(button.dataset.language);
+        try {
+            localStorage.setItem('language', language);
+        } catch (_) {
+            // Keep the chosen language for this visit.
+        }
+    }));
+
+    setTheme(savedTheme === 'dark' || (savedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches));
+    setMenu(false);
+    applyLanguage(language);
+
     if (!reducedMotion.matches && 'IntersectionObserver' in window) {
         revealObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
