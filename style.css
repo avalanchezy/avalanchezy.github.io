@@ -150,6 +150,17 @@ h2 { font-family: var(--serif); font-size: clamp(34px, 4vw, 47px); font-weight: 
 .education-list a { text-decoration: none; }
 .education-list a:hover { text-decoration: underline; text-decoration-color: var(--coral); }
 
+.experience-note { color: var(--coral); font-size: 21px; line-height: 1.4; transform: rotate(4deg); margin-right: 22px; }
+.experience-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 35px; }
+.experience-card { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--green); border-radius: 3px; padding: 25px; }
+.experience-card:last-child { border-top-color: var(--coral); }
+.experience-date { font-size: 11px; color: var(--green); font-weight: 550; }
+.experience-location { font-size: 10px; color: var(--muted); margin-top: 3px; }
+.experience-card h3 { font-family: var(--serif); font-size: 25px; line-height: 1.25; font-weight: 400; margin-top: 25px; }
+.experience-organization { font-size: 11px; line-height: 1.7; color: var(--muted); margin-top: 10px; }
+.experience-description { font-size: 13px; line-height: 1.85; margin-top: 20px; }
+.experience-more { margin-top: 25px; color: var(--green); }
+
 /* One warm invitation to finish the page. */
 .contact-section { background: var(--soft-green); padding: 49px 53px; display: grid; grid-template-columns: 1.3fr .8fr; gap: 60px; border-radius: 5px; position: relative; }
 .contact-section h2 { font-size: 54px; position: relative; }
@@ -176,7 +187,7 @@ h2 { font-family: var(--serif); font-size: clamp(34px, 4vw, 47px); font-weight: 
 /* Let each language keep its own reading rhythm. */
 html:lang(zh) { --sans: 'DM Sans', 'Microsoft YaHei', 'PingFang SC', sans-serif; --serif: 'Songti SC', 'SimSun', serif; --hand: 'KaiTi', 'STKaiti', 'Kaiti SC', serif; }
 html:lang(zh) h1 { font-size: clamp(48px, 5.6vw, 76px); line-height: 1.25; letter-spacing: -.035em; }
-html:lang(zh) h1 em { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.25em; }
+html:lang(zh) h1 em { font-family: var(--serif); font-size: 1.25em; font-style: normal; }
 html:lang(zh) h2 { line-height: 1.35; letter-spacing: .015em; }
 html:lang(zh) h2 em, html:lang(zh) .personal-note em { font-style: normal; }
 html:lang(zh) .hero-intro { line-height: 1.8; }
@@ -188,6 +199,10 @@ html:lang(fr) .personal-note p { font-size: 21px; }
 @media (min-width: 1300px) { .hero { column-gap: 75px; } .hero-collage { margin-left: 15px; } }
 @media (max-width: 1000px) {
   .container { width: calc(100% - 64px); }
+  .nav-links { gap: 22px; }
+  .nav-actions { gap: 18px; }
+  .experience-grid { gap: 14px; }
+  .experience-card { padding: 20px; }
   .hero { column-gap: 20px; padding-top: 65px; }
   .hero-collage { transform: scale(.9); transform-origin: 50% 35%; }
   .portrait-frame { left: 20px; }
@@ -255,6 +270,11 @@ html:lang(fr) .personal-note p { font-size: 21px; }
   .education-list li { grid-template-columns: 120px 1fr; gap: 15px; padding-left: 19px; padding-bottom: 29px; }
   .country-label { display: block; margin-left: 0; }
   .journey-note { font-size: 17px; margin-top: 18px; transform: none; }
+  .experience-grid { grid-template-columns: 1fr; gap: 17px; margin-top: 26px; }
+  .experience-note { display: none; }
+  .experience-card { padding: 23px; }
+  .experience-card h3 { font-size: 27px; margin-top: 18px; }
+  .experience-description { margin-top: 15px; }
   .contact-section { grid-template-columns: 1fr; gap: 25px; padding: 30px 24px; }
   .contact-section h2 { font-size: 47px; }
   .contact-section p:not(.eyebrow) { font-size: 12px; margin-top: 18px; }
@@ -299,6 +319,6 @@ html:lang(fr) .personal-note p { font-size: 21px; }
   .hero { display: block; min-height: auto; padding: 20px 0 30px; }
   h1 { font-size: 60px; }
   .section-block { padding-block: 25px; }
-  .publication-item { break-inside: avoid; }
+  .publication-item, .experience-card { break-inside: avoid; }
   .will-reveal { opacity: 1; transform: none; }
 }
