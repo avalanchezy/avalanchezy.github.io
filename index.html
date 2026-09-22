@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&family=Schoolbell&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Gowun+Dodum&family=Noto+Sans+SC:wght@400;500;600&family=Yomogi&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLKLDHKZEE"></script>
   <script>
@@ -18,13 +19,15 @@
     gtag('config', 'G-MLKLDHKZEE');
   </script>
   <script src="translations.js" defer></script>
+  <script src="locales/ja.js" defer></script>
+  <script src="locales/ko.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
   <header class="site-header">
     <nav class="container navigation" aria-label="Main navigation" data-i18n-aria="mainNavigation">
-      <a class="wordmark" href="#home" aria-label="Yi Zhu, home" data-i18n-aria="homeLabel">yz<span aria-hidden="true">✳</span></a>
+      <a class="wordmark" href="#home" aria-label="Yi Zhu, home" data-i18n-aria="homeLabel"><span data-i18n="siteName">Yi Zhu</span><span class="wordmark-flower" aria-hidden="true">✳</span></a>
       <div class="nav-actions">
         <button class="mobile-menu-btn" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu"><span data-i18n="menuText">Menu</span> <span aria-hidden="true">☰</span></button>
         <ul class="nav-links" id="nav-links">
@@ -35,10 +38,14 @@
           <li><a href="#publications" data-i18n="navPublications">Publications</a></li>
           <li><a href="#contact" data-i18n="navContact">Contact</a></li>
         </ul>
-        <div class="language-switch" role="group" aria-label="Choose language" data-i18n-aria="languageLabel">
-          <button class="language-button" type="button" data-language="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
-          <button class="language-button" type="button" data-language="zh" lang="zh-CN" aria-label="中文" aria-pressed="false">中文</button>
-          <button class="language-button" type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="false">FR</button>
+        <div class="language-switch">
+          <select id="language-select" class="language-select" aria-label="Choose a language" data-i18n-aria="languageLabel">
+            <option value="en" lang="en">English</option>
+            <option value="zh" lang="zh-CN">中文</option>
+            <option value="fr" lang="fr">Français</option>
+            <option value="ja" lang="ja">日本語</option>
+            <option value="ko" lang="ko">한국어</option>
+          </select>
         </div>
         <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Change the atmosphere" data-i18n-title="themeTitle"><span class="theme-icon" aria-hidden="true">☾</span></button>
       </div>
@@ -48,7 +55,7 @@
   <main id="main" class="container">
     <section id="home" class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Bonjour, hello, 你好</p>
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> <span data-i18n="helloEyebrow">Hello, make yourself at home</span></p>
         <h1 id="hero-title" data-i18n="heroTitle">Hi, I'm<br><em>Yi Zhu.</em><span class="hello-spark" aria-hidden="true">✳</span></h1>
         <p class="hero-intro" data-i18n="heroIntro">A PhD student in Lyon.<br><strong>Sometimes, an aspiring croissant.</strong></p>
         <p class="hero-description" data-i18n="heroDescription">Welcome to my little corner of the internet.<br>Here's a bit about me and what I've been up to.</p>
@@ -62,7 +69,10 @@
         </button>
       </div>
       <div class="hero-collage">
-        <svg class="sun-doodle" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="50" cy="50" r="21"/><path d="M50 8v10m0 64v10M8 50h10m64 0h10M20 20l7 7m46 46 7 7M20 80l7-7m46-46 7-7"/><path d="M42 52q8 10 16 0"/><path d="M42 43v2m16-2v2"/></svg>
+        <svg class="sky-doodle" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <g class="sky-sun"><circle cx="50" cy="50" r="21"/><path d="M50 8v10m0 64v10M8 50h10m64 0h10M20 20l7 7m46 46 7 7M20 80l7-7m46-46 7-7"/><path d="M42 52q8 10 16 0M42 43v2m16-2v2"/></g>
+          <g class="sky-moon"><path class="moon-crescent" d="M59 13a36 36 0 1 0 28 56A31 31 0 0 1 59 13Z"/><path d="M29 49q3 4 6 0m7 14q5 3 8-2"/><path d="M78 16v12m-6-6h12M88 42v8m-4-4h8"/></g>
+        </svg>
         <span class="handwritten collage-note" data-i18n="collageNote">a little curiosity<br>goes a long way.</span>
         <figure class="portrait-frame">
           <span class="paper-tape" aria-hidden="true"></span>

@@ -1,5 +1,7 @@
 window.siteCopy = {
   en: {
+    siteName: "Yi Zhu",
+    helloEyebrow: "Hello, make yourself at home",
     pageTitle: "Yi Zhu — My little corner of the internet",
     pageDescription: "Yi Zhu's personal homepage. A little about me, the places I've studied, and some things I've worked on.",
     skipLink: "Skip to content",
@@ -144,6 +146,8 @@ window.siteCopy = {
     countYearMany: "{count} papers from {year}"
   },
   zh: {
+    siteName: "朱译",
+    helloEyebrow: "你好呀，欢迎来坐坐",
     pageTitle: "朱译 — 欢迎来我的小站",
     pageDescription: "朱译的个人小站。聊聊自己，记下求学经历，也分享一些做过的工作。",
     skipLink: "跳转到正文",
@@ -288,6 +292,8 @@ window.siteCopy = {
     countYearMany: "{year} 年 · {count} 篇论文"
   },
   fr: {
+    siteName: "Yi Zhu",
+    helloEyebrow: "Bonjour, entrez donc",
     pageTitle: "Yi Zhu — Mon petit coin d’Internet",
     pageDescription: "La page personnelle de Yi Zhu. Un peu de moi, quelques étapes de mon parcours et des travaux à partager.",
     skipLink: "Aller au contenu",

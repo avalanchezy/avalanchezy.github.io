@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.getElementById('nav-links');
     const navLinks = [...menu.querySelectorAll('a[href^="#"]')];
     const sections = navLinks.map(link => document.getElementById(link.hash.slice(1)));
-    const languageButtons = [...document.querySelectorAll('.language-button')];
+    const languageSelect = document.getElementById('language-select');
     const moodText = document.getElementById('mood-text');
     const portrait = document.getElementById('portrait-button');
     const portraitCaption = document.getElementById('portrait-caption');
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const publications = [...document.querySelectorAll('.publication-item')];
     const publicationCount = document.getElementById('publication-count');
     const revealElements = [...document.querySelectorAll('.reveal')];
-    const supportedLanguages = ['en', 'zh', 'fr'];
+    const supportedLanguages = ['en', 'zh', 'fr', 'ja', 'ko'];
 
     let savedTheme;
     let savedLanguage;
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuButton.focus();
         }
     });
-    window.matchMedia('(min-width: 761px)').addEventListener('change', event => {
+    window.matchMedia('(min-width: 1001px)').addEventListener('change', event => {
         if (event.matches) setMenu(false);
     });
 
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.setAttribute(attribute, copy[element.getAttribute(`data-i18n-${key}`)]);
             });
         });
-        languageButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
+        languageSelect.value = language;
         moodText.textContent = copy.moods[moodIndex];
         portraitCaption.textContent = copy.captions[captionIndex];
         setTheme(document.body.classList.contains('dark'));
@@ -156,14 +156,14 @@ document.addEventListener('DOMContentLoaded', () => {
         filterPublications(filterYear);
     }
 
-    languageButtons.forEach(button => button.addEventListener('click', () => {
-        applyLanguage(button.dataset.language);
+    languageSelect.addEventListener('change', () => {
+        applyLanguage(languageSelect.value);
         try {
             localStorage.setItem('language', language);
         } catch (_) {
             // Keep the chosen language for this visit.
         }
-    }));
+    });
 
     setTheme(savedTheme === 'dark' || (savedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches));
     setMenu(false);
