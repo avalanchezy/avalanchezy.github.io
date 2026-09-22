@@ -144,9 +144,10 @@ h2 { font-family: var(--serif); font-size: clamp(34px, 4vw, 47px); font-weight: 
 .education-list li::before { content: ''; position: absolute; top: 6px; left: -4px; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--green); background: var(--paper); }
 .education-list li:first-child::before { background: var(--green); box-shadow: 0 0 0 4px var(--soft-green); }
 .education-date { font-size: 10px; color: var(--muted); padding-top: 1px; }
-.country-label { display: block; font-size: 9px; letter-spacing: .09em; text-transform: uppercase; margin-top: 4px; }
+.education-location { display: block; font-size: 10px; line-height: 1.5; margin-top: 5px; }
 .education-list h3 { font-size: 15px; font-weight: 550; line-height: 1.4; margin-bottom: 7px; }
 .education-list p { font-size: 12px; line-height: 1.8; color: var(--muted); }
+.education-list .education-field { color: var(--green); font-weight: 500; margin-bottom: 8px; }
 .education-list .education-note { margin-top: 7px; }
 .education-list a { text-decoration: none; }
 .education-list a:hover { text-decoration: underline; text-decoration-color: var(--coral); }
@@ -158,6 +159,7 @@ h2 { font-family: var(--serif); font-size: clamp(34px, 4vw, 47px); font-weight: 
 .experience-date { font-size: 11px; color: var(--green); font-weight: 550; }
 .experience-location { font-size: 10px; color: var(--muted); margin-top: 3px; }
 .experience-card h3 { font-family: var(--serif); font-size: 25px; line-height: 1.25; font-weight: 400; margin-top: 25px; }
+.experience-field { font-size: 12px; line-height: 1.7; color: var(--green); font-weight: 500; margin-top: 10px; }
 .experience-organization { font-size: 11px; line-height: 1.7; color: var(--muted); margin-top: 10px; }
 .experience-description { font-size: 13px; line-height: 1.85; margin-top: 20px; }
 .experience-more { margin-top: 25px; color: var(--green); }
@@ -213,7 +215,6 @@ html:lang(fr) .personal-note p { font-size: 21px; }
   .sun-doodle { right: -10px; }
   .about-section, .education-section { gap: 40px; grid-template-columns: .85fr 1.3fr; }
   .education-list li { grid-template-columns: 1fr; gap: 6px; }
-  .country-label { display: inline; margin-left: 9px; }
   .contact-section { gap: 35px; padding: 40px; }
   .contact-email { font-size: 14px; }
 }
@@ -268,8 +269,9 @@ html:lang(fr) .personal-note p { font-size: 21px; }
   .paper-link { grid-column: 2; flex-direction: row; justify-content: flex-start; align-items: center; gap: 12px; font-size: 10px; }
   .paper-arrow { width: 28px; height: 28px; font-size: 19px; }
   .education-list { margin-left: 4px; }
-  .education-list li { grid-template-columns: 120px 1fr; gap: 15px; padding-left: 19px; padding-bottom: 29px; }
-  .country-label { display: block; margin-left: 0; }
+  .education-list li { grid-template-columns: 1fr; gap: 9px; padding-left: 19px; padding-bottom: 29px; }
+  .education-date { display: flex; flex-wrap: wrap; gap: 2px 14px; }
+  .education-location { margin-top: 0; }
   .journey-note { font-size: 17px; margin-top: 18px; transform: none; }
   .experience-grid { grid-template-columns: 1fr; gap: 17px; margin-top: 26px; }
   .experience-note { display: none; }
@@ -303,8 +305,6 @@ html:lang(fr) .personal-note p { font-size: 21px; }
   .mood-button { gap: 6px; }
   .mood-label { font-size: 8px; flex-basis: 100%; }
   #mood-text { font-size: 16px; }
-  .education-list li { grid-template-columns: 1fr; gap: 6px; }
-  .country-label { display: inline; margin-left: 9px; }
   .contact-section { padding-inline: 19px; }
   .contact-email { font-size: 12px; }
 }
