@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeSection;
     let scrollFrame = false;
     let revealObserver;
+    const visitorStats = window.createVisitorStats(language);
 
     function setTheme(dark) {
         document.body.classList.toggle('dark', dark);
@@ -200,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             button.setAttribute('aria-label', copy.photoOpenLabel.replace('{title}', copy[key]));
         });
         if (photoDialog.open) showPhoto(selectedPhoto);
+        visitorStats.setLanguage(language);
         setTheme(document.body.classList.contains('dark'));
         setMenu(menu.classList.contains('is-open'));
         filterPublications(filterYear);

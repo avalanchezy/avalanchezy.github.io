@@ -1,0 +1,52 @@
+/* A postcard for the people who found this little corner. */
+.visitors-section { padding: 28px 0 78px; }
+.visitor-card { position: relative; width: min(960px, 100%); margin-inline: auto; padding: 38px 34px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 3px 7px 5px 3px; box-shadow: var(--shadow); }
+.visitor-card::before { content: ''; position: absolute; width: 96px; height: 25px; top: -11px; left: 30px; background: #e5cd928c; transform: rotate(-6deg); clip-path: polygon(1% 9%, 97% 0, 100% 93%, 0 100%); pointer-events: none; }
+.visitor-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.5fr); gap: 32px; align-items: center; }
+.visitor-heading { position: relative; min-width: 0; }
+.visitor-heading .section-index { margin-bottom: 13px; }
+.visitor-heading h2 { font-size: clamp(30px, 3.2vw, 39px); line-height: 1.2; }
+.visitor-intro { max-width: 29em; color: var(--muted); font-size: 13px; line-height: 1.85; margin-top: 18px; }
+.visitor-metrics { display: flex; flex-wrap: wrap; gap: 16px 30px; margin-top: 24px; }
+.visitor-metric { display: flex; flex-direction: column; min-width: 60px; }
+.visitor-metric strong { font-family: var(--hand); font-size: 30px; font-weight: 400; line-height: 1.3; color: var(--green); font-variant-numeric: tabular-nums; }
+.visitor-metric span { color: var(--muted); font-size: 11px; line-height: 1.6; }
+.visitor-map-column { min-width: 0; position: relative; }
+.visitor-map-frame { min-height: 180px; display: grid; place-items: center; padding: 14px 0 4px; }
+#visitor-map-outline, .visitor-map-frame > a { grid-area: 1 / 1; }
+#visitor-map-outline { width: 100%; height: auto; }
+#visitor-map { display: block; width: 100%; height: auto; }
+.visitor-map-frame a { display: block; width: 100%; border-radius: 3px; transition: transform .25s; }
+.visitor-map-frame a:hover { transform: translateY(-2px); }
+.visitor-map-status { max-width: 25em; margin: 18px auto; text-align: center; color: var(--muted); font-family: var(--hand); font-size: 16px; line-height: 1.8; }
+.visitor-stamp { position: absolute; right: -10px; top: -26px; width: 58px; height: 58px; display: grid; place-items: center; color: var(--coral); border: 1px dashed currentColor; border-radius: 50%; transform: rotate(12deg); pointer-events: none; opacity: .75; }
+.visitor-stamp svg { width: 35px; height: 35px; }
+.visitor-note { color: var(--muted); font-size: 10px; line-height: 1.7; text-align: center; margin: 7px auto 0; max-width: 36em; }
+.visitor-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 22px; margin-top: 26px; padding-top: 14px; border-top: 1px dashed var(--line); color: var(--muted); font-size: 10px; line-height: 1.8; }
+.visitor-meta-links { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.visitor-meta a { text-decoration-color: var(--line); }
+.visitor-meta a:hover { color: var(--coral); text-decoration-color: currentColor; }
+body.dark .visitor-card::before { background: #baa76a70; }
+body.dark .visitor-stamp { opacity: .85; }
+@media (max-width: 760px) {
+  .visitors-section { padding-bottom: 56px; }
+  .visitor-card { padding: 31px 24px 20px; }
+  .visitor-layout { grid-template-columns: minmax(0, 1fr); gap: 17px; }
+  .visitor-heading { padding-right: 20px; }
+  .visitor-heading h2 { font-size: 34px; }
+  .visitor-metrics { gap: 18px 36px; margin-top: 19px; }
+  .visitor-map-frame { min-height: 130px; padding-top: 10px; }
+  .visitor-stamp { top: -9px; right: -5px; width: 46px; height: 46px; }
+  .visitor-stamp svg { width: 28px; height: 28px; }
+  .visitor-meta { margin-top: 20px; }
+}
+@media (max-width: 420px) {
+  .visitor-card { padding-inline: 19px; }
+  .visitor-heading h2 { font-size: 30px; }
+  .visitor-meta { align-items: flex-start; flex-direction: column; gap: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .visitor-map-frame a { transition: none; }
+  .visitor-map-frame a:hover { transform: none; }
+}
+@media print { .visitors-section { display: none; } }

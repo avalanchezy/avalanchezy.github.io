@@ -13,12 +13,13 @@ The upstream copyright statement declares no Reserved Font Names, so the
 subset retains the internal family name `Xiaolai`.
 
 To regenerate, install `fonttools[woff]`, download the original font above,
-then run this from the repository root (replace `/path/to` with its location):
+then combine `translations.js` and `visitors-locales.js` into a UTF-8 text file,
+and run this from the repository root (replace `/path/to` with its location):
 
 ```sh
-pyftsubset /path/to/Xiaolai-Regular.ttf --text-file=translations.js --unicodes=U+0020-007E,U+2000-206F,U+3000-303F --flavor=woff2 --output-file=assets/fonts/xiaolai-regular.woff2 --layout-features='*' --name-IDs='*' --name-legacy --name-languages='*'
+pyftsubset /path/to/Xiaolai-Regular.ttf --text-file=/path/to/combined-copy.txt --unicodes=U+0020-007E,U+2000-206F,U+3000-303F --flavor=woff2 --output-file=assets/fonts/xiaolai-regular.woff2 --layout-features='*' --name-IDs='*' --name-legacy --name-languages='*'
 ```
 
-The subset includes all source-supported characters in `translations.js`,
-ASCII, and general/CJK punctuation. Emoji use the browser's emoji font.
+The subset includes all source-supported characters in `translations.js`
+and `visitors-locales.js`, ASCII, and general/CJK punctuation. Emoji use the browser's emoji font.
 Regenerate when Chinese copy introduces new characters.
