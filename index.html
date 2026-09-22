@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yi Zhu – PhD Student</title>
+  <meta name="description" content="Yi Zhu's personal homepage. A little about me, the places I've studied, and some things I've worked on.">
+  <meta name="theme-color" content="#f7f5ee">
+  <title>Yi Zhu — My little corner of the internet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&family=Schoolbell&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLKLDHKZEE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,145 +17,112 @@
     gtag('js', new Date());
     gtag('config', 'G-MLKLDHKZEE');
   </script>
+  <script src="script.js" defer></script>
 </head>
-
 <body>
-  <div class="floating-decoration sun">☀️</div>
-  <div class="floating-decoration star">⭐</div>
-
-  <div class="container">
-    <nav>
-      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="container navigation" aria-label="Main navigation">
+      <a class="wordmark" href="#home" aria-label="Yi Zhu, home">yz<span aria-hidden="true">✳</span></a>
+      <div class="nav-actions">
+        <button class="mobile-menu-btn" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">Menu <span aria-hidden="true">☰</span></button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home" aria-current="location">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Change the atmosphere"><span class="theme-icon" aria-hidden="true">☾</span></button>
+      </div>
     </nav>
+  </header>
 
-    <section id="home" class="hero page-content">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1>I'm a</h1>
-          <p class="subtitle">PhD Student 🎓</p>
-          <p class="tagline">
-            at CREATIS Lab, Lyon<br>
-            <span class="small">but</span><br>
-            sometimes want to be <span class="highlight" id="adjective">a peaceful</span>
-            <span id="noun">croissant 🥐</span>
-          </p>
+  <main id="main" class="container">
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Bonjour, hello, 你好</p>
+        <h1 id="hero-title">Hi, I'm<br><em>Yi Zhu.</em><span class="hello-spark" aria-hidden="true">✳</span></h1>
+        <p class="hero-intro">A PhD student in Lyon.<br><strong>Sometimes, an aspiring croissant.</strong></p>
+        <p class="hero-description">Welcome to my little corner of the internet.<br>Here's a bit about me and what I've been up to.</p>
+        <div class="hero-links">
+          <a class="button button-primary" href="#about">A little about me <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="profile-image-container" onclick="changeImage()">
-          <img src="avatar.jpg" alt="Yi Zhu" class="profile-image" id="profile-img">
-          <p class="profile-caption" id="img-caption">This is me!</p>
-        </div>
+        <button class="mood-button" id="mood-button" type="button" aria-label="Off-duty daydream: change my pastry">
+          <span class="mood-label">Off-duty daydream</span>
+          <span id="mood-text" aria-live="polite">a peaceful croissant 🥐</span>
+          <span class="mood-shuffle" aria-hidden="true">↻</span>
+        </button>
+      </div>
+      <div class="hero-collage">
+        <svg class="sun-doodle" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="50" cy="50" r="21"/><path d="M50 8v10m0 64v10M8 50h10m64 0h10M20 20l7 7m46 46 7 7M20 80l7-7m46-46 7-7"/><path d="M42 52q8 10 16 0"/><path d="M42 43v2m16-2v2"/></svg>
+        <span class="handwritten collage-note">a little curiosity<br>goes a long way.</span>
+        <figure class="portrait-frame">
+          <span class="paper-tape" aria-hidden="true"></span>
+          <button id="portrait-button" class="portrait-button" type="button" aria-label="Say hello to Yi"><img src="avatar.jpg" alt="Portrait of Yi Zhu" width="1050" height="1350" fetchpriority="high"></button>
+          <figcaption id="portrait-caption" class="handwritten" aria-live="polite">yes, that's me.</figcaption>
+        </figure>
+        <div class="location-stamp"><span aria-hidden="true">↗</span> BASED IN<br><strong>LYON, FR</strong></div>
+        <div class="personal-note"><span class="note-pin" aria-hidden="true"></span><span class="eyebrow">Note to self</span><p>Stay curious.<br><em>Take a pastry break.</em></p><span class="handwritten">leave room for little joys.</span></div>
+        <svg class="arrow-doodle" viewBox="0 0 100 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5c70-8 90 50 20 50-36 0-7-39 22-20 16 11 16 30 18 37m-10-7 11 9 8-13"/></svg>
+      </div>
+      <a class="scroll-cue" href="#about"><span aria-hidden="true">↓</span> A little more about me</a>
+      <span class="hero-margin-note handwritten" aria-hidden="true">glad you stopped by.</span>
+    </section>
+
+    <section id="about" class="about-section section-block" aria-labelledby="about-title">
+      <div class="section-heading reveal"><p class="eyebrow section-index">01 / Behind the hello</p><h2 id="about-title">A little<br><em>about me.</em></h2></div>
+      <div class="about-copy reveal">
+        <p class="lead">I'm Yi, currently based in Lyon, France, and pursuing a PhD at the <a href="https://www.creatis.insa-lyon.fr/en/" target="_blank" rel="noopener noreferrer">CREATIS Laboratory</a>, <a href="https://www.universite-lyon.fr/" target="_blank" rel="noopener noreferrer">University of Lyon</a>.</p>
+        <p>My studies have taken me from France to Korea and Japan. This page brings together a few stops along the way, some of my work, and a way to say hello.</p>
+        <p>On the work side, I study <strong>medical imaging and 3D deep learning</strong> as part of my PhD in Signal and Image Processing.</p>
       </div>
     </section>
 
-    <section id="about" class="page-content">
-      <h2 class="section-title">About Me</h2>
-      <div class="bio-content">
-        <p>
-          My name is <span class="name">Yi Zhu</span>, and I am a PhD candidate in Signal and Image Processing
-          at the <span class="name">CREATIS Laboratory</span>, University of Lyon, France.
-        </p>
-        <p>
-          My research focuses on <strong>digital twin modeling in dentistry</strong> through the fusion of
-          CBCT (Cone Beam CT) and IOS (Intraoral Scan) data. I develop deep learning methods to combine
-          low-resolution volumetric data with high-resolution surface scans.
-        </p>
-      </div>
-
-      <h3 class="section-title" style="font-size: 2rem; margin-top: 2rem;">Education</h3>
-      <ul class="education-list">
-        <li>
-          <span class="degree">PhD Candidate</span><br>
-          <span class="school">
-            <a href="https://www.creatis.insa-lyon.fr/en/" target="_blank" rel="noopener noreferrer">CREATIS Laboratory</a>, 
-            <a href="https://www.universite-lyon.fr/" target="_blank" rel="noopener noreferrer">University of Lyon</a>, France
-          </span><br>
-          <span class="period">Oct 2024 – Sep 2027</span>
-        </li>
-        <li>
-          <span class="degree">Visiting PhD Student</span><br>
-          <span class="school">
-            <a href="https://www.nii.ac.jp/en/" target="_blank" rel="noopener noreferrer">National Institute of Informatics - NII</a>, Japan
-          </span><br>
-          <span class="period">Aug 2025 – Jan 2026</span>
-        </li>
-        <li>
-          <span class="degree">Diplôme d'Ingénieur, Electrical Engineering</span><br>
-          <span class="school">
-            <a href="https://www.insa-lyon.fr/en/" target="_blank" rel="noopener noreferrer">Institut national des sciences appliquées de Lyon - INSA Lyon</a>, France
-          </span><br>
-          <span class="period">Sep 2019 – Aug 2024</span>
-        </li>
-        <li>
-          <span class="degree">Exchange Student</span><br>
-          <span class="school">
-            <a href="https://www.postech.ac.kr/eng/" target="_blank" rel="noopener noreferrer">Pohang University of Science and Technology - POSTECH</a>, Korea
-          </span><br>
-          <span class="period">Sep 2022 – Jun 2023</span>
-        </li>
-      </ul>
+    <section id="education" class="education-section section-block" aria-labelledby="education-title">
+      <div class="section-heading reveal"><p class="eyebrow section-index">02 / The path so far</p><h2 id="education-title">A few stops<br><em>along the way.</em></h2><p class="handwritten journey-note">France, Korea, Japan.<br>A little context for the journey.</p></div>
+      <ol class="education-list">
+        <li class="reveal"><div class="education-date">Oct 2024 – Sep 2027<span class="country-label">France</span></div><div><h3>PhD Candidate</h3><p><a href="https://www.creatis.insa-lyon.fr/en/" target="_blank" rel="noopener noreferrer">CREATIS Laboratory</a><br><a href="https://www.universite-lyon.fr/" target="_blank" rel="noopener noreferrer">University of Lyon</a></p></div></li>
+        <li class="reveal"><div class="education-date">Aug 2025 – Jan 2026<span class="country-label">Japan</span></div><div><h3>Visiting PhD Student</h3><p><a href="https://www.nii.ac.jp/en/" target="_blank" rel="noopener noreferrer">National Institute of Informatics · NII</a></p></div></li>
+        <li class="reveal"><div class="education-date">Sep 2019 – Aug 2024<span class="country-label">France</span></div><div><h3>Diplôme d'Ingénieur</h3><p>Electrical Engineering<br><a href="https://www.insa-lyon.fr/en/" target="_blank" rel="noopener noreferrer">Institut national des sciences appliquées de Lyon · INSA Lyon</a></p></div></li>
+        <li class="reveal"><div class="education-date">Sep 2022 – Jun 2023<span class="country-label">Korea</span></div><div><h3>Exchange Student</h3><p><a href="https://www.postech.ac.kr/eng/" target="_blank" rel="noopener noreferrer">Pohang University of Science and Technology · POSTECH</a></p></div></li>
+      </ol>
     </section>
 
-    <section id="publications" class="page-content">
-      <h2 class="section-title">Publications</h2>
-      <p style="font-size: 1.3rem; margin-bottom: 2rem;">
-        A collection of <span class="highlight" id="pub-adjective">cool</span> things I wrote.
-      </p>
-      
+    <section id="publications" class="section-block publications-section" aria-labelledby="publications-title">
+      <div class="section-topline reveal"><div class="section-heading"><p class="eyebrow section-index">03 / The work side</p><h2 id="publications-title">A few <em>publications.</em></h2></div><span class="handwritten papers-note">a few things I've<br>been working on ↙</span></div>
+      <div class="publication-toolbar reveal">
+        <div class="publication-filters" role="group" aria-label="Filter publications by year">
+          <button class="filter-button" type="button" data-year="all" aria-pressed="true">All <span>03</span></button>
+          <button class="filter-button" type="button" data-year="2026" aria-pressed="false">2026</button>
+          <button class="filter-button" type="button" data-year="2024" aria-pressed="false">2024</button>
+        </div>
+        <p id="publication-count" class="publication-count" role="status">3 papers</p>
+      </div>
       <div class="publication-list">
-        <div class="publication-item">
-          <span class="publication-venue">MICCAI 2026 ODIN Challenge</span>
-          <h3 class="publication-title">Registration Teaches Registration: Transform-Derived Crown Guidance for Semi-Supervised CBCT--IOS Alignment
-            <a class="publication-link" href="https://hal.science/view/index/docid/5732950">[PDF]</a>
-          </h3>
-          <p class="publication-authors">Y Zhu, R Kechichian, R Richert, S Valette</p>
-        </div>
-        
-      <div class="publication-list">
-        <div class="publication-item">
-          <span class="publication-venue">ISBI 2026</span>
-          <h3 class="publication-title">High-Fidelity 3D Tooth Reconstruction by Fusing Intraoral Scans and CBCT Data via a Deep Implicit Representation
-            <a class="publication-link" href="https://hal.science/hal-05538420/document">[PDF]</a>
-          </h3>
-          <p class="publication-authors">Y Zhu, R Kechichian, R Richert, S Ikehata, S Valette</p>
-        </div>
-        
-        <div class="publication-item">
-          <span class="publication-venue">ICSP 2024</span>
-          <h3 class="publication-title">Comparative Analysis of Three Advanced Deep Learning Algorithms for Multiple Sclerosis Lesion Segmentation in FLAIR MRI
-            <a class="publication-link" href="https://hal.science/hal-04767216/document">[PDF]</a>
-          </h3>
-          <p class="publication-authors">Y Zhu, T Grenier, C Revol-Muller</p>
-        </div>
+        <article class="publication-item reveal" data-year="2026">
+          <span class="publication-number" aria-hidden="true">01</span>
+          <div class="publication-content"><div class="publication-meta"><span class="publication-venue">MICCAI 2026 · ODIN Challenge</span><span class="paper-topic">Registration</span></div><h3>Registration Teaches Registration: Transform-Derived Crown Guidance for Semi-Supervised CBCT--IOS Alignment</h3><p class="publication-authors"><strong>Y Zhu</strong>, R Kechichian, R Richert, S Valette</p></div>
+          <a class="paper-link" href="https://hal.science/view/index/docid/5732950" target="_blank" rel="noopener noreferrer" aria-label="Read paper: Registration Teaches Registration on HAL"><span>Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+        </article>
+        <article class="publication-item reveal" data-year="2026">
+          <span class="publication-number" aria-hidden="true">02</span>
+          <div class="publication-content"><div class="publication-meta"><span class="publication-venue">ISBI 2026</span><span class="paper-topic">3D reconstruction</span></div><h3>High-Fidelity 3D Tooth Reconstruction by Fusing Intraoral Scans and CBCT Data via a Deep Implicit Representation</h3><p class="publication-authors"><strong>Y Zhu</strong>, R Kechichian, R Richert, S Ikehata, S Valette</p></div>
+          <a class="paper-link" href="https://hal.science/hal-05538420/document" target="_blank" rel="noopener noreferrer" aria-label="Read paper: High-Fidelity 3D Tooth Reconstruction PDF"><span>Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+        </article>
+        <article class="publication-item reveal" data-year="2024">
+          <span class="publication-number" aria-hidden="true">03</span>
+          <div class="publication-content"><div class="publication-meta"><span class="publication-venue">ICSP 2024</span><span class="paper-topic">Segmentation</span></div><h3>Comparative Analysis of Three Advanced Deep Learning Algorithms for Multiple Sclerosis Lesion Segmentation in FLAIR MRI</h3><p class="publication-authors"><strong>Y Zhu</strong>, T Grenier, C Revol-Muller</p></div>
+          <a class="paper-link" href="https://hal.science/hal-04767216/document" target="_blank" rel="noopener noreferrer" aria-label="Read paper: Comparative Analysis of Deep Learning Algorithms PDF"><span>Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+        </article>
       </div>
     </section>
 
-    <section id="contact" class="page-content">
-      <h2 class="section-title">Contact</h2>
-      <ul class="contact-list">
-        <li>📧 <a href="mailto:yi.zhu@creatis.insa-lyon.fr">yi.zhu@creatis.insa-lyon.fr</a></li>
-        <li>📱 +33 (0)7 66 07 81 88</li>
-        <li>🔗 <a href="https://www.linkedin.com/in/zhuyi0308/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li>💻 <a href="https://github.com/avalanchezy" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-      </ul>
-      <a href="CV_Yi_ZHU.pdf" class="cv-button" target="_blank">📄 Download CV</a>
+    <section id="contact" class="contact-section reveal" aria-labelledby="contact-title">
+      <div><p class="eyebrow section-index">04 / Say bonjour</p><h2 id="contact-title">Always nice<br><em>to say hello.</em><span aria-hidden="true">✳</span></h2><p>A question, a shared idea, or just a hello —<br>you're welcome to drop me a line.</p><a class="contact-email" href="mailto:yi.zhu@creatis.insa-lyon.fr">yi.zhu@creatis.insa-lyon.fr <span aria-hidden="true">↗</span></a></div>
+      <div class="contact-aside"><span class="handwritten">always room for<br>a good conversation.</span><div class="contact-links"><a href="https://github.com/avalanchezy" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/zhuyi0308/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="CV_Yi_ZHU.pdf" target="_blank" rel="noopener noreferrer">Curriculum vitae <span aria-hidden="true">↓</span></a><a href="tel:+33766078188">+33 (0)7 66 07 81 88 <span aria-hidden="true">↗</span></a></div></div>
     </section>
-
-    <footer>
-      <p class="footer-fun">
-        That's all for now!<br>
-        Back to being a <span class="emoji">🥐</span>
-      </p>
-      <p>© 2026 Yi Zhu</p>
-    </footer>
-  </div>
-  
-  <script src="script.js"></script>
+  </main>
+  <footer class="container site-footer"><p>© 2026 Yi Zhu</p><p class="handwritten">Back to being a croissant. <span aria-hidden="true">🥐</span></p><a href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
 </body>
 </html>

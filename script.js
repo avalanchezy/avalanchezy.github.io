@@ -1,103 +1,168 @@
-/* ==================================
-   Interactive JavaScript
-   ================================== */
-
-// Dark Mode Toggle
-function toggleTheme() {
-    document.body.classList.toggle('dark');
-    const btn = document.querySelector('.theme-toggle');
-    btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-
-    // Save preference
-    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-}
-
-// Load saved theme
 document.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-        document.body.classList.add('dark');
-        document.querySelector('.theme-toggle').textContent = '☀️';
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const themeButton = document.querySelector('.theme-toggle');
+    let savedTheme;
+    try {
+        savedTheme = localStorage.getItem('theme');
+    } catch (_) {
+        // The page still works when browser storage is unavailable.
     }
 
-    // Set random adjective and noun
-    setRandomText();
-    setPublicationAdjective();
-});
-
-// Mobile Menu Toggle
-function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('active');
-}
-
-// Random Text for Hero
-const adjectives = ['a peaceful', 'a happy', 'a sleepy', 'a calm', 'a lazy', 'a hungry'];
-const nouns = ['croissant 🥐', 'baguette 🥖', 'cheese 🧀', 'macaron 🍪', 'éclair ⚡', 'crêpe 🥞'];
-let currentNoun = 'croissant';
-
-function setRandomText() {
-    const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
-    const noun = nouns[Math.floor(Math.random() * nouns.length)];
-
-    document.getElementById('adjective').textContent = adj;
-    document.getElementById('noun').textContent = noun;
-
-    // Extract noun name without emoji for caption
-    currentNoun = noun.split(' ')[0];
-    currentNoun = currentNoun.charAt(0).toUpperCase() + currentNoun.slice(1);
-}
-
-// Publication Random Adjective
-const pubAdjectives = ['cool', 'interesting', 'fun', 'awesome', 'brilliant'];
-
-function setPublicationAdjective() {
-    const pubAdj = document.getElementById('pub-adjective');
-    if (pubAdj) {
-        pubAdj.textContent = pubAdjectives[Math.floor(Math.random() * pubAdjectives.length)];
+    function setTheme(dark) {
+        document.body.classList.toggle('dark', dark);
+        themeButton.querySelector('.theme-icon').textContent = dark ? '☼' : '☾';
+        themeButton.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
     }
-}
 
-// Image Carousel
-const images = [
-    { src: 'avatar.jpg', caption: 'This is me!' },
-    // Add more images here if desired
-];
-let currentImageIndex = 0;
-
-function changeImage() {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-
-    // If only one image, just do a fun animation
-    const img = document.getElementById('profile-img');
-    img.style.transform = 'scale(1.1) rotate(5deg)';
-
-    setTimeout(() => {
-        img.style.transform = '';
-    }, 300);
-
-    // Update caption with random fun text
-    const captions = ['This is me!', "That's still me!", 'Yes, me again!', 'Hello there!'];
-    document.getElementById('img-caption').textContent =
-        captions[Math.floor(Math.random() * captions.length)];
-}
-
-// Smooth scroll for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-            // Close mobile menu if open
-            document.querySelector('.nav-links').classList.remove('active');
+    setTheme(savedTheme === 'dark' || (savedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches));
+    themeButton.addEventListener('click', () => {
+        const dark = !document.body.classList.contains('dark');
+        setTheme(dark);
+        try {
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+        } catch (_) {
+            // Keep the chosen theme for this visit.
         }
     });
-});
 
-// Add some random rotation to skill tags on load
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.skill-tag').forEach(tag => {
-        const rotation = (Math.random() - 0.5) * 6; // -3 to 3 degrees
-        tag.style.transform = `rotate(${rotation}deg)`;
+    const menuButton = document.querySelector('.mobile-menu-btn');
+    const menu = document.getElementById('nav-links');
+    const navLinks = [...menu.querySelectorAll('a[href^="#"]')];
+
+    function setMenu(open) {
+        menu.classList.toggle('is-open', open);
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    menuButton.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
+    navLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', event => {
+        if (!menu.contains(event.target) && !menuButton.contains(event.target)) setMenu(false);
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menu.classList.contains('is-open')) {
+            setMenu(false);
+            menuButton.focus();
+        }
+    });
+    window.matchMedia('(min-width: 761px)').addEventListener('change', event => {
+        if (event.matches) setMenu(false);
+    });
+
+    const sections = navLinks.map(link => document.getElementById(link.hash.slice(1)));
+    let activeSection;
+    let scrollFrame = false;
+
+    function updateActiveSection() {
+        scrollFrame = false;
+        let current = sections[0];
+        const readingLine = window.innerHeight * 0.3;
+        sections.forEach(section => {
+            if (section.getBoundingClientRect().top <= readingLine) current = section;
+        });
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+            current = sections[sections.length - 1];
+        }
+        if (current === activeSection) return;
+        activeSection = current;
+        navLinks.forEach(link => {
+            if (link.hash === `#${current.id}`) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+        });
+    }
+
+    function queueActiveSectionUpdate() {
+        if (!scrollFrame) {
+            scrollFrame = true;
+            requestAnimationFrame(updateActiveSection);
+        }
+    }
+
+    window.addEventListener('scroll', queueActiveSectionUpdate, { passive: true });
+    window.addEventListener('resize', queueActiveSectionUpdate);
+    updateActiveSection();
+
+    const moods = [
+        'a peaceful croissant 🥐',
+        'a curious baguette 🥖',
+        'a slightly caffeinated cookie 🍪',
+        'a daydreaming dumpling 🥟',
+        'a deadline-powered pretzel 🥨',
+        'a very optimistic pancake 🥞'
+    ];
+    const moodText = document.getElementById('mood-text');
+    let moodIndex = 0;
+    moodText.setAttribute('aria-live', 'polite');
+    document.getElementById('mood-button').addEventListener('click', () => {
+        moodIndex = (moodIndex + 1) % moods.length;
+        moodText.textContent = moods[moodIndex];
+    });
+
+    const portrait = document.getElementById('portrait-button');
+    const portraitCaption = document.getElementById('portrait-caption');
+    const captions = [
+        "yes, that's me.",
+        'hello from Lyon!',
+        'still curious, still me.',
+        'probably a croissant.'
+    ];
+    let captionIndex = 0;
+    portraitCaption.setAttribute('aria-live', 'polite');
+    portrait.addEventListener('click', () => {
+        captionIndex = (captionIndex + 1) % captions.length;
+        portraitCaption.textContent = captions[captionIndex];
+        if (!reducedMotion.matches) portrait.classList.add('is-waving');
+    });
+    portrait.addEventListener('animationend', () => portrait.classList.remove('is-waving'));
+
+    const filterButtons = [...document.querySelectorAll('.filter-button')];
+    const publications = [...document.querySelectorAll('.publication-item')];
+    const publicationCount = document.getElementById('publication-count');
+
+    function filterPublications(year) {
+        let count = 0;
+        publications.forEach(publication => {
+            publication.hidden = year !== 'all' && publication.dataset.year !== year;
+            if (!publication.hidden) count++;
+        });
+        filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.year === year)));
+        publicationCount.textContent = `${count} ${count === 1 ? 'paper' : 'papers'}${year === 'all' ? '' : ` from ${year}`}`;
+        queueActiveSectionUpdate();
+    }
+
+    filterButtons.forEach(button => button.addEventListener('click', () => filterPublications(button.dataset.year)));
+    filterPublications('all');
+
+    const revealElements = [...document.querySelectorAll('.reveal')];
+    let revealObserver;
+    if (!reducedMotion.matches && 'IntersectionObserver' in window) {
+        revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        revealElements.forEach(element => {
+            if (element.getBoundingClientRect().top >= window.innerHeight) {
+                element.classList.add('will-reveal');
+                revealObserver.observe(element);
+            } else {
+                element.classList.add('is-visible');
+            }
+        });
+    }
+    reducedMotion.addEventListener('change', event => {
+        if (event.matches) {
+            if (revealObserver) revealObserver.disconnect();
+            revealElements.forEach(element => {
+                element.classList.remove('will-reveal');
+                element.classList.add('is-visible');
+            });
+            portrait.classList.remove('is-waving');
+        }
     });
 });
