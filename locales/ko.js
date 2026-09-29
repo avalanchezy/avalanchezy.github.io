@@ -115,6 +115,7 @@ window.siteCopy.ko = {
   topicReconstruction: "3차원 재구성",
   topicSegmentation: "분할",
   readPaper: "논문 읽기",
+  paperMapPanoAria: "논문 읽기: MapPano3D (HAL)",
   paperRegistrationAria: "논문 읽기: Registration Teaches Registration (HAL)",
   paperReconstructionAria: "논문 읽기: High-Fidelity 3D Tooth Reconstruction (PDF)",
   paperSegmentationAria: "논문 읽기: Comparative Analysis of Deep Learning Algorithms (PDF)",

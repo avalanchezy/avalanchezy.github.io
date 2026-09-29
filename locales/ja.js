@@ -115,6 +115,7 @@ window.siteCopy.ja = {
   topicReconstruction: "3次元再構成",
   topicSegmentation: "セグメンテーション",
   readPaper: "論文を読む",
+  paperMapPanoAria: "論文を読む：MapPano3D（HAL）",
   paperRegistrationAria: "論文を読む：Registration Teaches Registration（HAL）",
   paperReconstructionAria: "論文を読む：High-Fidelity 3D Tooth Reconstruction（PDF）",
   paperSegmentationAria: "論文を読む：Comparative Analysis of Deep Learning Algorithms（PDF）",
