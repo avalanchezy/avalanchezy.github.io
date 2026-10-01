@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&family=Schoolbell&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Gowun+Dodum&family=Noto+Sans+SC:wght@400;500;600&family=Yomogi&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260922-visitors">
+  <link rel="stylesheet" href="style.css?v=20261001-pages">
   <link rel="stylesheet" href="visitors.css?v=20260922-visitors">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLKLDHKZEE"></script>
   <script>
@@ -19,12 +19,12 @@
     gtag('js', new Date());
     gtag('config', 'G-MLKLDHKZEE');
   </script>
-  <script src="translations.js?v=20260929-mappano3d" defer></script>
-  <script src="locales/ja.js?v=20260929-mappano3d" defer></script>
-  <script src="locales/ko.js?v=20260929-mappano3d" defer></script>
+  <script src="translations.js?v=20261001-pages" defer></script>
+  <script src="locales/ja.js?v=20261001-pages" defer></script>
+  <script src="locales/ko.js?v=20261001-pages" defer></script>
   <script src="visitors-locales.js?v=20260922-visitors" defer></script>
   <script src="visitors.js?v=20260922-visitors" defer></script>
-  <script src="script.js?v=20260922-visitors" defer></script>
+  <script src="script.js?v=20261001-pages" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
@@ -55,8 +55,8 @@
     </nav>
   </header>
 
-  <main id="main" class="container">
-    <section id="home" class="hero" aria-labelledby="hero-title">
+  <main id="main" class="container" tabindex="-1">
+    <section id="home" data-page="home" class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> <span data-i18n="helloEyebrow">Hello, make yourself at home</span></p>
         <h1 id="hero-title" data-i18n="heroTitle">Hi, I'm<br><em>Yi Zhu.</em><span class="hello-spark" aria-hidden="true">✳</span></h1>
@@ -86,11 +86,11 @@
         <button class="personal-note" id="note-button" type="button" aria-label="Draw another little note" data-i18n-aria="noteAria"><span class="note-pin" aria-hidden="true"></span><span class="note-shuffle" aria-hidden="true">↻</span><span class="eyebrow" data-i18n="noteLabel">Note to self</span><span class="note-body" id="note-text" aria-live="polite">Stay curious.<br><em>Take a pastry break.</em></span><span class="handwritten" data-i18n="noteFooter">leave room for little joys.</span></button>
         <svg class="arrow-doodle" viewBox="0 0 100 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5c70-8 90 50 20 50-36 0-7-39 22-20 16 11 16 30 18 37m-10-7 11 9 8-13"/></svg>
       </div>
-      <a class="scroll-cue" href="#about"><span aria-hidden="true">↓</span> <span data-i18n="scrollCue">A little more about me</span></a>
+      <a class="scroll-cue" href="#about"><span aria-hidden="true">↗</span> <span data-i18n="scrollCue">A little more about me</span></a>
       <span class="hero-margin-note handwritten" aria-hidden="true" data-i18n="marginNote">glad you stopped by.</span>
     </section>
 
-    <section id="about" class="about-section section-block" aria-labelledby="about-title">
+    <section id="about" data-page="about" class="about-section section-block" aria-labelledby="about-title">
       <div class="section-heading reveal"><p class="eyebrow section-index" data-i18n="aboutIndex">01 / About me</p><h2 id="about-title" data-i18n="aboutTitle">A little<br><em>about me.</em></h2></div>
       <div class="about-copy reveal">
         <p class="lead" data-i18n="aboutLead">I'm Yi Zhu, currently based in Lyon, France, and pursuing a PhD at the <a href="https://www.creatis.insa-lyon.fr/en/" target="_blank" rel="noopener noreferrer">CREATIS Laboratory</a>, <a href="https://www.universite-lyon.fr/" target="_blank" rel="noopener noreferrer">University of Lyon</a>.</p>
@@ -99,7 +99,7 @@
       </div>
     </section>
 
-    <section id="life" class="life-section section-block" aria-labelledby="gallery-title">
+    <section id="life" data-page="about" class="life-section section-block" aria-labelledby="gallery-title">
       <div class="gallery-heading reveal">
         <div class="section-heading"><p class="eyebrow section-index" data-i18n="galleryIndex">Off the clock</p><h2 id="gallery-title" data-i18n="galleryTitle">Life, in<br><em>little frames.</em></h2></div>
         <div class="gallery-copy"><p data-i18n="galleryIntro">A few moments between the pages of my CV.</p><p id="gallery-hint" class="handwritten" data-i18n="galleryHint">Click a photo for the full frame.</p></div>
@@ -129,7 +129,7 @@
       </div>
     </section>
 
-    <section id="education" class="education-section section-block" aria-labelledby="education-title">
+    <section id="education" data-page="education" class="education-section section-block" aria-labelledby="education-title">
       <div class="section-heading reveal"><p class="eyebrow section-index" data-i18n="educationIndex">02 / Education</p><h2 id="education-title" data-i18n="educationTitle">Where I’ve<br><em>studied.</em></h2><p class="handwritten journey-note" data-i18n="journeyNote">Roots in Changzhou.<br>A few stops along the way.</p></div>
       <ol class="education-list">
         <li class="reveal">
@@ -167,7 +167,7 @@
       </ol>
     </section>
 
-    <section id="experience" class="section-block experience-section" aria-labelledby="experience-title">
+    <section id="experience" data-page="experience" class="section-block experience-section" aria-labelledby="experience-title">
       <div class="section-topline reveal">
         <div class="section-heading"><p class="eyebrow section-index" data-i18n="experienceIndex">03 / Internships</p><h2 id="experience-title" data-i18n="experienceTitle">Learning<br><em>through practice.</em></h2></div>
         <p class="handwritten experience-note" data-i18n="experienceNote">from lines of code<br>to spirulina.</p>
@@ -203,7 +203,7 @@
       <a class="text-link experience-more" href="https://www.linkedin.com/in/zhuyi0308/" target="_blank" rel="noopener noreferrer"><span data-i18n="experienceLinkedin">More on LinkedIn</span> <span aria-hidden="true">↗</span></a>
     </section>
 
-    <section id="publications" class="section-block publications-section" aria-labelledby="publications-title">
+    <section id="publications" data-page="publications" class="section-block publications-section" aria-labelledby="publications-title">
       <div class="section-topline reveal"><div class="section-heading"><p class="eyebrow section-index" data-i18n="publicationsIndex">04 / Publications</p><h2 id="publications-title" data-i18n="publicationsTitle">Ideas,<br><em>on paper.</em></h2></div><span class="handwritten papers-note" data-i18n="papersNote">a few things I've<br>been working on ↙</span></div>
       <div class="publication-toolbar reveal">
         <div class="publication-filters" role="group" aria-label="Filter publications by year" data-i18n-aria="filterLabel">
@@ -217,7 +217,7 @@
         <article class="publication-item reveal" data-year="2026">
           <span class="publication-number" aria-hidden="true">01</span>
           <div class="publication-content"><div class="publication-meta"><span class="publication-venue" lang="en">ACCV 2026</span><span class="paper-topic" data-i18n="topicReconstruction">3D reconstruction</span></div><h3 lang="en">MapPano3D: Map-Guided Large-Scale Urban Reconstruction from Panoramic Videos</h3><p class="publication-authors" lang="en"><strong>Y Zhu</strong>, K Aizawa, S Valette, S Ikehata</p></div>
-          <a class="paper-link" href="https://hal.science/view/index/docid/5770009" target="_blank" rel="noopener noreferrer" aria-label="Read paper: MapPano3D on HAL" data-i18n-aria="paperMapPanoAria"><span data-i18n="readPaper">Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+          <a class="paper-link" href="https://hal.science/view/index/docid/5774047" target="_blank" rel="noopener noreferrer" aria-label="Read paper: MapPano3D on HAL" data-i18n-aria="paperMapPanoAria"><span data-i18n="readPaper">Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
         </article>
         <article class="publication-item reveal" data-year="2026">
           <span class="publication-number" aria-hidden="true">02</span>
@@ -237,11 +237,11 @@
       </div>
     </section>
 
-    <section id="contact" class="contact-section reveal" aria-labelledby="contact-title">
+    <section id="contact" data-page="contact" class="contact-section reveal" aria-labelledby="contact-title">
       <div><p class="eyebrow section-index" data-i18n="contactIndex">05 / Contact</p><h2 id="contact-title" data-i18n="contactTitle">Always nice<br><em>to say hello.</em><span class="contact-spark" aria-hidden="true">✳</span></h2><p data-i18n="contactIntro">A question, a shared idea, or just a hello —<br>you're welcome to drop me a line.</p><a class="contact-email" href="mailto:yi.zhu@creatis.insa-lyon.fr">yi.zhu@creatis.insa-lyon.fr <span aria-hidden="true">↗</span></a></div>
       <div class="contact-aside"><span class="handwritten" data-i18n="contactNote">always room for<br>a good conversation.</span><div class="contact-links"><a href="https://github.com/avalanchezy" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/zhuyi0308/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="CV_Yi_ZHU.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="cvLabel">Curriculum vitae</span> <span aria-hidden="true">↓</span></a><a href="tel:+33766078188">+33 (0)7 66 07 81 88 <span aria-hidden="true">↗</span></a></div></div>
     </section>
-    <section id="visitors" class="visitors-section" aria-labelledby="visitor-title">
+    <section id="visitors" data-page="home" class="visitors-section" aria-labelledby="visitor-title">
       <div class="visitor-card">
         <div class="visitor-layout">
           <header class="visitor-heading">
@@ -280,6 +280,6 @@
       </div>
     </div>
   </dialog>
-  <footer class="container site-footer"><p data-i18n="footerCopyright">© 2026 Yi Zhu</p><p class="handwritten"><span data-i18n="footerNote">Back to being a croissant.</span> <span aria-hidden="true">🥐</span></p><a href="#home"><span data-i18n="backToTop">Back to top</span> <span aria-hidden="true">↑</span></a></footer>
+  <footer class="container site-footer"><p data-i18n="footerCopyright">© 2026 Yi Zhu</p><p class="handwritten"><span data-i18n="footerNote">Back to being a croissant.</span> <span aria-hidden="true">🥐</span></p><a href="#home"><span data-i18n="backHome">Back home</span> <span aria-hidden="true">←</span></a></footer>
 </body>
 </html>

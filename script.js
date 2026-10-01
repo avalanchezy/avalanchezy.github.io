@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.querySelector('.mobile-menu-btn');
     const menu = document.getElementById('nav-links');
     const navLinks = [...menu.querySelectorAll('a[href^="#"]')];
-    const sections = navLinks.map(link => document.getElementById(link.hash.slice(1)));
+    const pageNames = new Set(navLinks.map(link => link.hash.slice(1)));
+    const pageSections = [...document.querySelectorAll('main > [data-page]')];
+    const pageAliases = { life: 'about', visitors: 'home' };
     const languageSelect = document.getElementById('language-select');
     const moodText = document.getElementById('mood-text');
     const portrait = document.getElementById('portrait-button');
@@ -42,8 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let noteIndex = randomIndex(copy.notes);
     let selectedPhoto;
     let filterYear = 'all';
-    let activeSection;
-    let scrollFrame = false;
+    let activePage = 'home';
     let revealObserver;
     const visitorStats = window.createVisitorStats(language);
 
@@ -70,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     menuButton.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
-    navLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
     document.addEventListener('click', event => {
         if (!menu.contains(event.target) && !menuButton.contains(event.target) && !event.target.closest('.language-switch')) {
             setMenu(false);
@@ -86,33 +86,76 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.matches) setMenu(false);
     });
 
-    function updateActiveSection() {
-        scrollFrame = false;
-        let current = sections[0];
-        const readingLine = window.innerHeight * 0.3;
-        sections.forEach(section => {
-            if (section.getBoundingClientRect().top <= readingLine) current = section;
-        });
-        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
-            current = sections[sections.length - 1];
-        }
-        if (current === activeSection) return;
-        activeSection = current;
+    function pageFromLocation() {
+        const hash = window.location.hash.slice(1);
+        const legacyPage = pageAliases[hash] || hash;
+        const requested = pageNames.has(legacyPage)
+            ? legacyPage : new URL(window.location.href).searchParams.get('page');
+        return pageNames.has(requested) ? requested : 'home';
+    }
+
+    function pageAnchorFromLocation() {
+        const hash = window.location.hash.slice(1);
+        return Object.hasOwn(pageAliases, hash) ? hash : '';
+    }
+
+    function pageURL(page, anchor = '') {
+        const url = new URL(window.location.href);
+        url.hash = anchor;
+        if (page === 'home') url.searchParams.delete('page');
+        else url.searchParams.set('page', page);
+        return `${url.pathname}${url.search}${url.hash}`;
+    }
+
+    function updatePageTitle() {
+        const link = navLinks.find(link => link.dataset.pageLink === activePage);
+        document.title = activePage === 'home' ? copy.pageTitle : `${copy[link.dataset.i18n]} · ${copy.siteName}`;
+    }
+
+    function showPage(page, focus = false, anchor = '') {
+        activePage = page;
+        pageSections.forEach(section => { section.hidden = section.dataset.page !== page; });
+        document.body.dataset.page = page;
         navLinks.forEach(link => {
-            if (link.hash === `#${current.id}`) link.setAttribute('aria-current', 'location');
+            if (link.dataset.pageLink === page) link.setAttribute('aria-current', 'page');
             else link.removeAttribute('aria-current');
         });
-    }
-
-    function queueActiveSectionUpdate() {
-        if (!scrollFrame) {
-            scrollFrame = true;
-            requestAnimationFrame(updateActiveSection);
+        if (photoDialog.open) photoDialog.close();
+        setMenu(false);
+        updatePageTitle();
+        if (anchor) document.getElementById(anchor).scrollIntoView({ behavior: 'instant', block: 'start' });
+        else window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        if (focus) {
+            const heading = document.getElementById(anchor || page).querySelector('h1, h2');
+            heading.tabIndex = -1;
+            heading.focus({ preventScroll: true });
         }
     }
 
-    window.addEventListener('scroll', queueActiveSectionUpdate, { passive: true });
-    window.addEventListener('resize', queueActiveSectionUpdate);
+    // Keep ordinary anchor navigation as a fallback when JavaScript is unavailable.
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        const page = pageAliases[link.hash.slice(1)] || link.hash.slice(1);
+        if (!pageNames.has(page)) return;
+        link.dataset.pageLink = page;
+        link.href = pageURL(page);
+        link.addEventListener('click', event => {
+            if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            if (page !== activePage || window.location.hash) window.history.pushState(null, '', pageURL(page));
+            showPage(page, true);
+        });
+    });
+
+    function restorePage() {
+        const page = pageFromLocation();
+        if (window.location.hash === '#main' && page === activePage) return;
+        const anchor = pageAnchorFromLocation();
+        window.history.replaceState(window.history.state, '', pageURL(page, anchor));
+        showPage(page, true, anchor);
+    }
+    window.history.scrollRestoration = 'manual';
+    window.addEventListener('popstate', restorePage);
+    window.addEventListener('hashchange', restorePage);
 
     moodText.setAttribute('aria-live', 'polite');
     document.getElementById('mood-button').addEventListener('click', () => {
@@ -172,7 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ? (count === 1 ? 'countOne' : 'countMany')
             : (count === 1 ? 'countYearOne' : 'countYearMany');
         publicationCount.textContent = copy[countKey].replace('{count}', count).replace('{year}', year);
-        queueActiveSectionUpdate();
     }
 
     filterButtons.forEach(button => button.addEventListener('click', () => filterPublications(button.dataset.year)));
@@ -181,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         language = nextLanguage;
         copy = window.siteCopy[language];
         document.documentElement.lang = language === 'zh' ? 'zh-CN' : language;
-        document.title = copy.pageTitle;
+        updatePageTitle();
         document.querySelector('meta[name="description"]').content = copy.pageDescription;
         document.querySelectorAll('[data-i18n]').forEach(element => {
             element.innerHTML = copy[element.dataset.i18n];
@@ -219,6 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setTheme(savedTheme === 'dark' || (savedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches));
     setMenu(false);
     applyLanguage(language);
+    const initialPage = pageFromLocation();
+    const initialAnchor = pageAnchorFromLocation();
+    window.history.replaceState(window.history.state, '', pageURL(initialPage, initialAnchor));
+    showPage(initialPage, false, initialAnchor);
 
     if (!reducedMotion.matches && 'IntersectionObserver' in window) {
         revealObserver = new IntersectionObserver(entries => {

@@ -1,8 +1,16 @@
 # avalanchezy.github.io
 
+## Page navigation
+
+The six navigation items open separate views rather than scrolling through a long page. Views use shareable URLs such as `?page=publications`, which work on GitHub Pages without a server-side router. Reloading, opening a link in another tab, and browser back/forward navigation preserve the selected view. Existing links such as `#publications` still work.
+
+About includes the photo gallery; Home includes the visitor postcard. Language, theme, and publication filters remain available when switching views. Printing includes the current view. Without JavaScript, the complete page and its original anchor links remain accessible.
+
+To check navigation, serve this directory with `python -m http.server 8765 --bind 127.0.0.1`, then run `node tests/navigation.cjs` with Playwright installed. `SITE_URL` overrides the preview address; `PLAYWRIGHT_MODULE` can point to an existing Playwright installation. The browser checks cover desktop/mobile navigation, direct links, history, five languages, publication filters, photos, theme switching, and the no-JavaScript fallback. Third-party requests are blocked during these checks.
+
 ## Visitor postcard
 
-The footer uses a real Stats4U counter, **1881857609**, created on 22 September 2026.
+Home uses a real Stats4U counter, **1881857609**, created on 22 September 2026.
 Its public dashboard is https://www.stats4u.net/live/1881857609.
 
 - `visitors.js` loads one counting map image per production page load and reads its totals from the provider's public JSON endpoint. The map is not lazy-loaded, so visitors do not have to scroll to the footer to be counted.

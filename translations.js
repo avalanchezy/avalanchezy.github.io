@@ -150,7 +150,7 @@ window.siteCopy = {
     cvLabel: "Curriculum vitae",
     footerCopyright: "© 2026 Yi Zhu",
     footerNote: "Back to being a croissant.",
-    backToTop: "Back to top",
+    backHome: "Back home",
     moods: [
       "a peaceful croissant 🥐",
       "a curious baguette 🥖",
@@ -377,7 +377,7 @@ window.siteCopy = {
     cvLabel: "个人简历",
     footerCopyright: "© 2026 朱译",
     footerNote: "好啦，先去歇一会儿。",
-    backToTop: "回到顶部",
+    backHome: "返回首页",
     moods: [
       "今天适合慢慢来 🌿",
       "好奇心正在冒泡 🫧",
@@ -604,7 +604,7 @@ window.siteCopy = {
     cvLabel: "Curriculum vitæ",
     footerCopyright: "© 2026 Yi Zhu",
     footerNote: "Allez, pause croissant.",
-    backToTop: "Retour en haut",
+    backHome: "Retour à l’accueil",
     moods: [
       "tranquille comme un dimanche ☀️",
       "curieux de tout 🔎",

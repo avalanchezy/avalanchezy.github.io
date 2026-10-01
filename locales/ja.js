@@ -149,7 +149,7 @@ window.siteCopy.ja = {
   cvLabel: "履歴書・研究経歴書",
   footerCopyright: "© 2026 Yi Zhu",
   footerNote: "さて、ちょっとひと休み。",
-  backToTop: "ページの先頭へ",
+  backHome: "ホームに戻る",
   moods: [
     "今日はのんびりモード 🌿",
     "好奇心、むくむく 🔎",

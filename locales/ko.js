@@ -149,7 +149,7 @@ window.siteCopy.ko = {
   cvLabel: "이력서",
   footerCopyright: "© 2026 Yi Zhu",
   footerNote: "그럼, 잠깐 쉬어 갈게요.",
-  backToTop: "맨 위로",
+  backHome: "홈으로",
   moods: [
     "오늘은 느긋하게 🌿",
     "호기심이 반짝 🔎",
