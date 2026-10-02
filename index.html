@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&family=Schoolbell&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Gowun+Dodum&family=Noto+Sans+SC:wght@400;500;600&family=Yomogi&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261001-pages">
+  <link rel="stylesheet" href="style.css?v=20261002-papers">
   <link rel="stylesheet" href="visitors.css?v=20260922-visitors">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLKLDHKZEE"></script>
   <script>
@@ -19,12 +19,12 @@
     gtag('js', new Date());
     gtag('config', 'G-MLKLDHKZEE');
   </script>
-  <script src="translations.js?v=20261001-pages" defer></script>
-  <script src="locales/ja.js?v=20261001-pages" defer></script>
-  <script src="locales/ko.js?v=20261001-pages" defer></script>
+  <script src="translations.js?v=20261002-papers" defer></script>
+  <script src="locales/ja.js?v=20261002-papers" defer></script>
+  <script src="locales/ko.js?v=20261002-papers" defer></script>
   <script src="visitors-locales.js?v=20260922-visitors" defer></script>
   <script src="visitors.js?v=20260922-visitors" defer></script>
-  <script src="script.js?v=20261001-pages" defer></script>
+  <script src="script.js?v=20261002-papers" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
@@ -205,6 +205,7 @@
 
     <section id="publications" data-page="publications" class="section-block publications-section" aria-labelledby="publications-title">
       <div class="section-topline reveal"><div class="section-heading"><p class="eyebrow section-index" data-i18n="publicationsIndex">04 / Publications</p><h2 id="publications-title" data-i18n="publicationsTitle">Ideas,<br><em>on paper.</em></h2></div><span class="handwritten papers-note" data-i18n="papersNote">a few things I've<br>been working on ↙</span></div>
+      <p class="publication-intro reveal" data-i18n="publicationIntro">From city streets to dental scans and brain MRI, I study how to reconstruct, align and understand 3D data.</p>
       <div class="publication-toolbar reveal">
         <div class="publication-filters" role="group" aria-label="Filter publications by year" data-i18n-aria="filterLabel">
           <button class="filter-button" type="button" data-year="all" aria-pressed="true"><span data-i18n="filterAll">All</span> <span class="filter-total">04</span></button>
@@ -216,25 +217,38 @@
       <div class="publication-list">
         <article class="publication-item reveal" data-year="2026">
           <span class="publication-number" aria-hidden="true">01</span>
-          <div class="publication-content"><div class="publication-meta"><span class="publication-venue" lang="en">ACCV 2026</span><span class="paper-topic" data-i18n="topicReconstruction">3D reconstruction</span></div><h3 lang="en">MapPano3D: Map-Guided Large-Scale Urban Reconstruction from Panoramic Videos</h3><p class="publication-authors" lang="en"><strong>Y Zhu</strong>, K Aizawa, S Valette, S Ikehata</p></div>
-          <a class="paper-link" href="https://hal.science/view/index/docid/5774047" target="_blank" rel="noopener noreferrer" aria-label="Read paper: MapPano3D on HAL" data-i18n-aria="paperMapPanoAria"><span data-i18n="readPaper">Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+          <figure class="publication-figure"><a class="publication-preview" href="assets/publications/mappano3d.webp" target="_blank" rel="noopener noreferrer" aria-label="View concept illustration at full size (opens in a new tab)" data-i18n-aria="publicationPreviewAria"><img src="assets/publications/mappano3d.webp" alt="Concept illustration: reconstructed 3D streets aligned with a 2D road map." data-i18n-alt="paperMapPanoImageAlt" width="960" height="640" loading="lazy" decoding="async"><span class="publication-preview-caption"><span data-i18n="publicationPreviewLabel">Enlarge illustration</span><span aria-hidden="true">↗</span></span></a></figure>
+          <div class="publication-content"><div class="publication-meta"><span class="publication-venue" lang="en">ACCV 2026</span><span class="paper-topic" data-i18n="topicReconstruction">3D reconstruction</span></div><h3 lang="en">MapPano3D: Map-Guided Large-Scale Urban Reconstruction from Panoramic Videos</h3><p class="publication-authors" lang="en"><strong>Y Zhu</strong>, K Aizawa, S Valette, S Ikehata</p>
+            <p class="publication-summary" data-i18n="paperMapPanoSummary">MapPano3D uses a 2D road map to bring local reconstructions from panoramic street videos into a coherent urban scene. Road topology and surface cues guide alignment, then the same transforms place buildings, trees and sidewalks—using pretrained models without additional training.</p>
+            <a class="paper-link" href="https://hal.science/view/index/docid/5774047" target="_blank" rel="noopener noreferrer" aria-label="Read paper: MapPano3D on HAL" data-i18n-aria="paperMapPanoAria"><span data-i18n="readPaper">Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+          </div>
         </article>
         <article class="publication-item reveal" data-year="2026">
           <span class="publication-number" aria-hidden="true">02</span>
-          <div class="publication-content"><div class="publication-meta"><span class="publication-venue" lang="en">MICCAI 2026 · ODIN Challenge</span><span class="paper-topic" data-i18n="topicRegistration">Registration</span></div><h3 lang="en">Registration Teaches Registration: Transform-Derived Crown Guidance for Semi-Supervised CBCT--IOS Alignment</h3><p class="publication-authors" lang="en"><strong>Y Zhu</strong>, R Kechichian, R Richert, S Valette</p></div>
-          <a class="paper-link" href="https://hal.science/view/index/docid/5732950" target="_blank" rel="noopener noreferrer" aria-label="Read paper: Registration Teaches Registration on HAL" data-i18n-aria="paperRegistrationAria"><span data-i18n="readPaper">Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+          <figure class="publication-figure"><a class="publication-preview" href="assets/publications/registration.webp" target="_blank" rel="noopener noreferrer" aria-label="View concept illustration at full size (opens in a new tab)" data-i18n-aria="publicationPreviewAria"><img src="assets/publications/registration.webp" alt="Concept illustration: upper and lower dental crown meshes aligning with CBCT anatomy." data-i18n-alt="paperRegistrationImageAlt" width="960" height="640" loading="lazy" decoding="async"><span class="publication-preview-caption"><span data-i18n="publicationPreviewLabel">Enlarge illustration</span><span aria-hidden="true">↗</span></span></a></figure>
+          <div class="publication-content"><div class="publication-meta"><span class="publication-venue" lang="en">MICCAI 2026 · ODIN Challenge</span><span class="paper-topic" data-i18n="topicRegistration">Registration</span></div><h3 lang="en">Registration Teaches Registration: Transform-Derived Crown Guidance for Semi-Supervised CBCT--IOS Alignment</h3><p class="publication-authors" lang="en"><strong>Y Zhu</strong>, R Kechichian, R Richert, S Valette</p>
+            <p class="publication-summary" data-i18n="paperRegistrationSummary">RTR matches dental CT volumes to detailed intraoral surface scans by turning a small set of known alignments into weak crown annotations and expanding training with unlabeled cases. Predicted crown regions guide geometric alignment, while learned ranking and consistency between the two jaws select the final transforms.</p>
+            <a class="paper-link" href="https://hal.science/view/index/docid/5732950" target="_blank" rel="noopener noreferrer" aria-label="Read paper: Registration Teaches Registration on HAL" data-i18n-aria="paperRegistrationAria"><span data-i18n="readPaper">Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+          </div>
         </article>
         <article class="publication-item reveal" data-year="2026">
           <span class="publication-number" aria-hidden="true">03</span>
-          <div class="publication-content"><div class="publication-meta"><span class="publication-venue" lang="en">ISBI 2026</span><span class="paper-topic" data-i18n="topicReconstruction">3D reconstruction</span></div><h3 lang="en">High-Fidelity 3D Tooth Reconstruction by Fusing Intraoral Scans and CBCT Data via a Deep Implicit Representation</h3><p class="publication-authors" lang="en"><strong>Y Zhu</strong>, R Kechichian, R Richert, S Ikehata, S Valette</p></div>
-          <a class="paper-link" href="https://hal.science/hal-05538420/document" target="_blank" rel="noopener noreferrer" aria-label="Read paper: High-Fidelity 3D Tooth Reconstruction PDF" data-i18n-aria="paperReconstructionAria"><span data-i18n="readPaper">Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+          <figure class="publication-figure"><a class="publication-preview" href="assets/publications/tooth-reconstruction.webp" target="_blank" rel="noopener noreferrer" aria-label="View concept illustration at full size (opens in a new tab)" data-i18n-aria="publicationPreviewAria"><img src="assets/publications/tooth-reconstruction.webp" alt="Concept illustration: a rough crown–root hybrid guides fitting of a pretrained DeepSDF shape prior to produce a continuous, complete incisor." data-i18n-alt="paperReconstructionImageAlt" width="960" height="640" loading="lazy" decoding="async"><span class="publication-preview-caption"><span data-i18n="publicationPreviewLabel">Enlarge illustration</span><span aria-hidden="true">↗</span></span></a></figure>
+          <div class="publication-content"><div class="publication-meta"><span class="publication-venue" lang="en">ISBI 2026</span><span class="paper-topic" data-i18n="topicReconstruction">3D reconstruction</span></div><h3 lang="en">High-Fidelity 3D Tooth Reconstruction by Fusing Intraoral Scans and CBCT Data via a Deep Implicit Representation</h3><p class="publication-authors" lang="en"><strong>Y Zhu</strong>, R Kechichian, R Richert, S Ikehata, S Valette</p>
+            <p class="publication-summary" data-i18n="paperReconstructionSummary">We align and combine the detailed crown from an intraoral scan with the root from CBCT to form a rough hybrid model. For incisors, this model guides latent-code optimization in a pretrained DeepSDF shape model, replacing the rough join with a continuous, complete 3D tooth surface.</p>
+            <a class="paper-link" href="https://hal.science/hal-05538420/document" target="_blank" rel="noopener noreferrer" aria-label="Read paper: High-Fidelity 3D Tooth Reconstruction PDF" data-i18n-aria="paperReconstructionAria"><span data-i18n="readPaper">Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+          </div>
         </article>
         <article class="publication-item reveal" data-year="2024">
           <span class="publication-number" aria-hidden="true">04</span>
-          <div class="publication-content"><div class="publication-meta"><span class="publication-venue" lang="en">ICSP 2024</span><span class="paper-topic" data-i18n="topicSegmentation">Segmentation</span></div><h3 lang="en">Comparative Analysis of Three Advanced Deep Learning Algorithms for Multiple Sclerosis Lesion Segmentation in FLAIR MRI</h3><p class="publication-authors" lang="en"><strong>Y Zhu</strong>, T Grenier, C Revol-Muller</p></div>
-          <a class="paper-link" href="https://hal.science/hal-04767216/document" target="_blank" rel="noopener noreferrer" aria-label="Read paper: Comparative Analysis of Deep Learning Algorithms PDF" data-i18n-aria="paperSegmentationAria"><span data-i18n="readPaper">Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+          <figure class="publication-figure"><a class="publication-preview" href="assets/publications/ms-segmentation.webp" target="_blank" rel="noopener noreferrer" aria-label="View concept illustration at full size (opens in a new tab)" data-i18n-aria="publicationPreviewAria"><img src="assets/publications/ms-segmentation.webp" alt="Concept illustration: three model branches analyze a FLAIR brain MRI slice with lesion overlays." data-i18n-alt="paperSegmentationImageAlt" width="960" height="640" loading="lazy" decoding="async"><span class="publication-preview-caption"><span data-i18n="publicationPreviewLabel">Enlarge illustration</span><span aria-hidden="true">↗</span></span></a></figure>
+          <div class="publication-content"><div class="publication-meta"><span class="publication-venue" lang="en">ICSP 2024</span><span class="paper-topic" data-i18n="topicSegmentation">Segmentation</span></div><h3 lang="en">Comparative Analysis of Three Advanced Deep Learning Algorithms for Multiple Sclerosis Lesion Segmentation in FLAIR MRI</h3><p class="publication-authors" lang="en"><strong>Y Zhu</strong>, T Grenier, C Revol-Muller</p>
+            <p class="publication-summary" data-i18n="paperSegmentationSummary">We compare nnU-Net, UNeXt and YOLOv9 for outlining multiple sclerosis lesions in FLAIR brain MRI. The study examines how volumetric segmentation, a convolution–MLP model and detection-based segmentation handle the same task, using expert lesion masks as a reference for evaluation.</p>
+            <a class="paper-link" href="https://hal.science/hal-04767216/document" target="_blank" rel="noopener noreferrer" aria-label="Read paper: Comparative Analysis of Deep Learning Algorithms PDF" data-i18n-aria="paperSegmentationAria"><span data-i18n="readPaper">Read paper</span><span class="paper-arrow" aria-hidden="true">↗</span></a>
+          </div>
         </article>
       </div>
+      <p class="publication-illustration-note" data-i18n="publicationIllustrationNote">AI-generated concept illustrations. Select an image to enlarge.</p>
     </section>
 
     <section id="contact" data-page="contact" class="contact-section reveal" aria-labelledby="contact-title">

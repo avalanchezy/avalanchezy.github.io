@@ -1,5 +1,11 @@
 # avalanchezy.github.io
 
+## Illustrated publications
+
+The Publications view includes a short summary and an original AI-generated concept illustration for each of the four papers. Summaries, image descriptions and the illustration note are available in English, Chinese, French, Japanese and Korean. The English HTML remains readable without JavaScript.
+
+`assets/publications/` contains the four 960 × 640 WebP images (about 300 KB total). Images load lazily with reserved dimensions and open at full size in a new tab. `manifest.json` records the full generation prompts and the papers used as sources; illustrations are conceptual, not experimental results. MapPano3D was read from the author's local final manuscript while its HAL record was pending. The other three full papers were read from HAL.
+
 ## Page navigation
 
 The six navigation items open separate views rather than scrolling through a long page. Views use shareable URLs such as `?page=publications`, which work on GitHub Pages without a server-side router. Reloading, opening a link in another tab, and browser back/forward navigation preserve the selected view. Existing links such as `#publications` still work.
