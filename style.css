@@ -252,24 +252,26 @@ body.dark .publication-winner .publication-number { color: #e3c27d; }
 .education-trail li { border: 1px solid var(--line); border-radius: 20px; padding: 4px 10px; font-size: 10px; color: var(--muted); background: var(--surface); }
 .journey-note { color: var(--muted); margin-top: 28px; font-size: 19px; line-height: 1.5; transform: rotate(-3deg); }
 .education-list { padding: 0; list-style: none; margin-left: 5px; }
-.education-list li { display: grid; grid-template-columns: 205px minmax(0, 1fr); gap: 35px; position: relative; padding: 0 0 37px 30px; border-left: 1px solid var(--line); }
+.education-list li { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 35px; position: relative; padding: 0 0 37px 30px; border-left: 1px solid var(--line); }
 .education-list li:last-child { padding-bottom: 0; }
 .education-list li::before { content: ''; position: absolute; top: 6px; left: -4px; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--green); background: var(--paper); }
 .education-list li:first-child::before { background: var(--green); box-shadow: 0 0 0 4px var(--soft-green); }
 .education-content { min-width: 0; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
 .education-list li:last-child .education-content { padding-bottom: 0; border-bottom: 0; }
 .education-context { min-width: 0; }
-.institution-logos { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 19px; }
-/* Official marks sit quietly beside the timeline. Blending removes baked-in
-   white backgrounds without redrawing or changing the original assets. */
-.institution-logo { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 110px; height: 27px; max-width: 100%; overflow: hidden; filter: grayscale(1); opacity: .72; mix-blend-mode: multiply; }
+.institution-affiliations { display: grid; gap: 7px; margin-block: 13px; }
+.institution-affiliation { display: grid; grid-template-columns: 88px minmax(0, 1fr); align-items: center; gap: 14px; width: fit-content; max-width: 100%; min-height: 30px; font-size: 12px; line-height: 1.65; color: var(--ink); }
+.institution-affiliation > span:last-child { min-width: 0; }
+/* Keep each official mark with its institution name. Blending removes baked-in
+   white backgrounds while preserving original artwork and light-theme colors. */
+.institution-logo { display: flex; align-items: center; justify-content: center; flex-shrink: 0; justify-self: center; width: 84px; height: 22px; max-width: 100%; overflow: hidden; mix-blend-mode: multiply; }
 .institution-logo img { width: 100%; height: 100%; object-fit: contain; }
-.institution-logo-lyon { width: 80px; height: 42px; }
-.institution-logo-insa { width: 148px; height: 40px; }
-.institution-logo-nii { width: 152px; height: 32px; }
-.institution-logo-nii img { flex-shrink: 0; width: 226px; height: auto; max-width: none; }
-.institution-logo-postech { width: 135px; height: 15px; }
-.institution-logo-seal { width: 50px; height: 50px; }
+.institution-logo-lyon { width: 60px; height: 32px; }
+.institution-logo-insa { width: 88px; height: 26px; }
+.institution-logo-nii { width: 88px; height: 19px; }
+.institution-logo-nii img { flex-shrink: 0; width: 132px; height: auto; max-width: none; }
+.institution-logo-postech { width: 88px; height: 12px; }
+.institution-logo-seal { width: 30px; height: 30px; }
 body.dark .institution-logo { filter: grayscale(1) invert(1) brightness(1.5); opacity: .82; mix-blend-mode: screen; }
 .education-current { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; margin: 2px 0 10px; border-radius: 20px; background: var(--soft-green); color: var(--green); font-size: 10px; }
 .education-current::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
@@ -296,9 +298,10 @@ body.dark .institution-logo { filter: grayscale(1) invert(1) brightness(1.5); op
 .experience-field { font-size: 12px; line-height: 1.7; color: var(--green); font-weight: 500; margin-top: 10px; }
 .experience-organization { font-size: 11px; line-height: 1.7; color: var(--muted); margin-top: 10px; }
 .experience-description { font-size: 13px; line-height: 1.85; margin-top: 20px; }
-.experience-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; min-height: 50px; }
-.experience-brand { margin-left: auto; }
-.institution-logo-zhejiang img { flex-shrink: 0; width: 88px; height: auto; max-width: none; }
+.experience-header { min-height: 37px; }
+.experience-affiliation { display: grid; grid-template-columns: 88px minmax(0, 1fr); align-items: center; gap: 14px; margin-top: 15px; min-height: 32px; }
+.experience-affiliation .experience-organization { margin-top: 0; color: var(--ink); }
+.institution-logo-zhejiang img { flex-shrink: 0; width: 53px; height: auto; max-width: none; }
 .experience-more { margin-top: 25px; color: var(--green); }
 
 /* One warm invitation to finish the page. */
@@ -456,7 +459,6 @@ html:lang(fr) .note-body { font-size: 21px; }
   .education-list { margin-left: 4px; }
   .education-list li { grid-template-columns: 1fr; gap: 9px; padding-left: 19px; padding-bottom: 29px; }
   .education-content { padding-top: 8px; padding-bottom: 22px; }
-  .institution-logos { margin-top: 13px; gap: 16px; }
   .education-date { display: flex; flex-wrap: wrap; gap: 2px 14px; }
   .education-location { margin-top: 0; }
   .journey-note { font-size: 17px; margin-top: 18px; transform: none; }
