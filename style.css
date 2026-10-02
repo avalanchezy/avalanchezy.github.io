@@ -216,6 +216,15 @@ body.photo-open { overflow: hidden; }
 .publication-figure:has(a:hover), .publication-figure:has(a:focus-visible) { border-color: var(--green); }
 .publication-content { min-width: 0; }
 .publication-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; margin-bottom: 11px; }
+.presentation-badge { padding: 2px 8px; border: 1px solid var(--line); border-radius: 20px; color: var(--green); font-size: 10px; font-weight: 600; line-height: 1.6; }
+.challenge-award { display: flex; align-items: center; gap: 14px; padding: 15px 18px; margin-bottom: 20px; border-left: 3px solid #ad802a; border-radius: 0 4px 4px 0; background: #eee2b8; color: #624719; }
+.challenge-award svg { width: 30px; height: 36px; flex-shrink: 0; }
+.challenge-award strong { display: inline-block; margin-right: 13px; font-size: 21px; font-weight: 650; letter-spacing: -.025em; line-height: 1.4; }
+.challenge-award span { display: inline-block; font-size: 11px; font-weight: 550; }
+.challenge-award small { display: block; margin-top: 2px; font-size: 10px; }
+body.dark .challenge-award { background: #413d28; color: #efdaa3; border-color: #c7a45a; }
+.publication-winner .publication-number { color: #9b742d; }
+body.dark .publication-winner .publication-number { color: #e3c27d; }
 .publication-venue { font-size: 9px; text-transform: uppercase; letter-spacing: .045em; color: var(--green); font-weight: 700; }
 .paper-topic { font-size: 9px; color: var(--muted); padding-left: 13px; border-left: 1px solid var(--line); }
 .publication-content h3 { font-size: 17px; line-height: 1.5; letter-spacing: -.02em; font-weight: 550; max-width: 735px; }
@@ -226,6 +235,15 @@ body.photo-open { overflow: hidden; }
 .paper-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 17px; min-height: 36px; text-decoration: none; font-size: 11px; color: var(--green); }
 .paper-arrow { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; font-size: 23px; transition: transform .25s, color .25s, background .25s; }
 .paper-link:hover .paper-arrow { color: var(--paper); background: var(--ink); transform: rotate(8deg); }
+.talks-section { margin-top: 58px; }
+.talks-section > h3 { font-family: var(--display); font-size: 29px; font-weight: 400; letter-spacing: -.025em; }
+.keynote-card { display: grid; grid-template-columns: 205px minmax(0, 1fr); gap: 35px; margin-top: 24px; padding: 28px; border: 1px solid var(--line); border-radius: 4px; background: var(--soft-green); }
+.keynote-badge { display: inline-flex; padding: 5px 11px; margin-bottom: 14px; border-radius: 3px; background: var(--ink); color: var(--paper); font-size: 12px; font-weight: 550; }
+.keynote-context p { color: var(--muted); font-size: 12px; }
+.keynote-content { min-width: 0; }
+.keynote-content h4 { margin: 0 0 12px; font-size: 19px; font-weight: 550; line-height: 1.45; }
+.keynote-content p { color: var(--muted); font-size: 12px; line-height: 1.8; }
+.keynote-content p + p { margin-top: 5px; }
 .education-section { display: block; }
 .education-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 43px; }
 .education-trail { max-width: 400px; }
@@ -234,23 +252,25 @@ body.photo-open { overflow: hidden; }
 .education-trail li { border: 1px solid var(--line); border-radius: 20px; padding: 4px 10px; font-size: 10px; color: var(--muted); background: var(--surface); }
 .journey-note { color: var(--muted); margin-top: 28px; font-size: 19px; line-height: 1.5; transform: rotate(-3deg); }
 .education-list { padding: 0; list-style: none; margin-left: 5px; }
-.education-list li { display: grid; grid-template-columns: 175px minmax(0, 1fr); gap: 35px; position: relative; padding: 0 0 37px 30px; border-left: 1px solid var(--line); }
+.education-list li { display: grid; grid-template-columns: 205px minmax(0, 1fr); gap: 35px; position: relative; padding: 0 0 37px 30px; border-left: 1px solid var(--line); }
 .education-list li:last-child { padding-bottom: 0; }
 .education-list li::before { content: ''; position: absolute; top: 6px; left: -4px; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--green); background: var(--paper); }
 .education-list li:first-child::before { background: var(--green); box-shadow: 0 0 0 4px var(--soft-green); }
 .education-content { min-width: 0; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
 .education-list li:last-child .education-content { padding-bottom: 0; border-bottom: 0; }
-.institution-logos { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
-.institution-logo { display: flex; align-items: center; justify-content: center; width: 180px; height: 60px; max-width: 100%; padding: 10px; overflow: hidden; border: 1px solid #e4e5df; border-radius: 4px; background: #fff; }
+.education-context { min-width: 0; }
+.institution-logos { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 19px; }
+/* Official marks sit quietly beside the timeline. Blending removes baked-in
+   white backgrounds without redrawing or changing the original assets. */
+.institution-logo { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 110px; height: 27px; max-width: 100%; overflow: hidden; filter: grayscale(1); opacity: .72; mix-blend-mode: multiply; }
 .institution-logo img { width: 100%; height: 100%; object-fit: contain; }
-.institution-logo-lyon { width: 115px; }
-.institution-logo-lyon img { transform: scale(1.25); }
-.institution-logo-insa { width: 230px; }
-.institution-logo-nii { width: 230px; height: 66px; padding: 5px; }
-.institution-logo-nii img { transform: scale(1.35); }
-.institution-logo-postech { width: 205px; height: 52px; }
-.institution-logo-seal { width: 82px; height: 82px; padding: 7px; }
-.institution-logo-seal img { object-fit: contain; }
+.institution-logo-lyon { width: 80px; height: 42px; }
+.institution-logo-insa { width: 148px; height: 40px; }
+.institution-logo-nii { width: 152px; height: 32px; }
+.institution-logo-nii img { flex-shrink: 0; width: 226px; height: auto; max-width: none; }
+.institution-logo-postech { width: 135px; height: 15px; }
+.institution-logo-seal { width: 50px; height: 50px; }
+body.dark .institution-logo { filter: grayscale(1) invert(1) brightness(1.5); opacity: .82; mix-blend-mode: screen; }
 .education-current { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; margin: 2px 0 10px; border-radius: 20px; background: var(--soft-green); color: var(--green); font-size: 10px; }
 .education-current::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
 .education-date { font-size: 11px; color: var(--muted); padding-top: 1px; }
@@ -276,10 +296,9 @@ body.photo-open { overflow: hidden; }
 .experience-field { font-size: 12px; line-height: 1.7; color: var(--green); font-weight: 500; margin-top: 10px; }
 .experience-organization { font-size: 11px; line-height: 1.7; color: var(--muted); margin-top: 10px; }
 .experience-description { font-size: 13px; line-height: 1.85; margin-top: 20px; }
-.experience-card:has(.experience-brand) .experience-description { margin-bottom: 24px; }
-.experience-brand { order: 1; margin-top: auto; height: 64px; }
-.experience-brand.institution-logo-seal { width: 80px; }
-.institution-logo-zhejiang img { transform: scale(1.45); }
+.experience-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; min-height: 50px; }
+.experience-brand { margin-left: auto; }
+.institution-logo-zhejiang img { flex-shrink: 0; width: 88px; height: auto; max-width: none; }
 .experience-more { margin-top: 25px; color: var(--green); }
 
 /* One warm invitation to finish the page. */
@@ -437,8 +456,7 @@ html:lang(fr) .note-body { font-size: 21px; }
   .education-list { margin-left: 4px; }
   .education-list li { grid-template-columns: 1fr; gap: 9px; padding-left: 19px; padding-bottom: 29px; }
   .education-content { padding-top: 8px; padding-bottom: 22px; }
-  .institution-logos { margin-bottom: 16px; }
-  .institution-logo { flex-shrink: 0; }
+  .institution-logos { margin-top: 13px; gap: 16px; }
   .education-date { display: flex; flex-wrap: wrap; gap: 2px 14px; }
   .education-location { margin-top: 0; }
   .journey-note { font-size: 17px; margin-top: 18px; transform: none; }
@@ -448,6 +466,12 @@ html:lang(fr) .note-body { font-size: 21px; }
   .experience-card:last-child { flex-direction: column; align-items: stretch; gap: 18px; }
   .experience-card h3 { font-size: 27px; margin-top: 18px; }
   .experience-description { margin-top: 15px; }
+  .challenge-award { padding: 12px; gap: 10px; }
+  .challenge-award strong { display: block; margin-right: 0; }
+  .talks-section { margin-top: 42px; }
+  .talks-section > h3 { font-size: 25px; }
+  .keynote-card { grid-template-columns: 1fr; gap: 22px; padding: 22px; }
+  .keynote-content h4 { font-size: 17px; }
   .contact-section { grid-template-columns: 1fr; gap: 25px; padding: 30px 24px; }
   .contact-section h2 { font-size: 47px; }
   .contact-section p:not(.eyebrow) { font-size: 12px; margin-top: 18px; }
