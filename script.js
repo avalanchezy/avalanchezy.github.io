@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = [...document.querySelectorAll('.filter-button')];
     const publications = [...document.querySelectorAll('.publication-item')];
     const publicationCount = document.getElementById('publication-count');
+    const emailAddress = document.getElementById('contact-email-address');
+    const copyEmailButton = document.getElementById('copy-email');
+    const emailCopyStatus = document.getElementById('email-copy-status');
     const revealElements = [...document.querySelectorAll('.reveal')];
     const supportedLanguages = ['en', 'zh', 'fr', 'ja', 'ko'];
 
@@ -46,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let filterYear = 'all';
     let activePage = 'home';
     let revealObserver;
+    let emailCopyStatusKey = '';
     const visitorStats = window.createVisitorStats(language);
 
     function setTheme(dark) {
@@ -176,6 +180,31 @@ document.addEventListener('DOMContentLoaded', () => {
         noteText.innerHTML = copy.notes[noteIndex];
     });
 
+    function updateEmailCopyStatus() {
+        emailCopyStatus.textContent = emailCopyStatusKey ? copy[emailCopyStatusKey] : '';
+    }
+
+    copyEmailButton.addEventListener('click', async () => {
+        copyEmailButton.disabled = true;
+        emailCopyStatusKey = '';
+        updateEmailCopyStatus();
+        try {
+            await navigator.clipboard.writeText(emailAddress.textContent.trim());
+            emailCopyStatusKey = 'emailCopied';
+        } catch (_) {
+            const range = document.createRange();
+            range.selectNodeContents(emailAddress);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            emailCopyStatusKey = 'emailCopyFallback';
+        } finally {
+            copyEmailButton.disabled = false;
+            updateEmailCopyStatus();
+        }
+    });
+    copyEmailButton.hidden = false;
+
     function showPhoto(button) {
         selectedPhoto = button;
         const id = button.dataset.photo;
@@ -237,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         moodText.textContent = copy.moods[moodIndex];
         portraitCaption.textContent = copy.captions[captionIndex];
         noteText.innerHTML = copy.notes[noteIndex];
+        updateEmailCopyStatus();
         photoButtons.forEach(button => {
             const id = button.dataset.photo;
             const key = `photo${id[0].toUpperCase()}${id.slice(1)}Title`;

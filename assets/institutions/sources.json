@@ -1,0 +1,63 @@
+{
+  "retrieved": "2026-10-02",
+  "note": "Official institution assets used to identify existing education and internship affiliations. Artwork and colors are unchanged; SVG line endings and trailing whitespace were normalized.",
+  "assets": [
+    {
+      "institution": "CREATIS",
+      "file": "assets/institutions/creatis.png",
+      "sourcePage": "https://www.creatis.insa-lyon.fr/site/en",
+      "assetUrl": "https://www.creatis.insa-lyon.fr/site/sites/default/files/logo-creatis_0-1.png",
+      "sha256": "96782cb68191ae4c378e105e95e76a0317f64cdcab5abf2a612d6f4599a3b925",
+      "modified": false
+    },
+    {
+      "institution": "Université de Lyon",
+      "file": "assets/institutions/universite-lyon.svg",
+      "sourcePage": "https://www.universite-lyon.fr/",
+      "assetUrl": "https://www.universite-lyon.fr/uas/v2TER/LOGO/UDL_logo_Quadri-01.svg",
+      "sha256": "93505fcea8da1b3057d665950abf37f1907796e85783ac0da0a7060e531181bb",
+      "modified": "Line endings and trailing whitespace normalized; artwork unchanged.",
+      "sourceSha256": "c53316c7e57aee4cfe8cd316450b462b984982f1508a5f694271666d38637ac3"
+    },
+    {
+      "institution": "INSA Lyon",
+      "file": "assets/institutions/insa-lyon.png",
+      "sourcePage": "https://www.insa-lyon.fr/",
+      "assetUrl": "https://www.insa-lyon.fr/sites/all/themes/insa/logo.png",
+      "sha256": "73aefa4fe441a5b67308160dc9cbe7a0348993bfc5bcbf693dff03cce823ea17",
+      "modified": false
+    },
+    {
+      "institution": "National Institute of Informatics",
+      "file": "assets/institutions/nii.png",
+      "sourcePage": "https://www.nii.ac.jp/about/overview/commark/",
+      "assetUrl": "https://www.nii.ac.jp/about/upload/logo.png",
+      "sha256": "262df552c5c0d05d67809de38f39c6b248cb3d8413870c2c7d0d9739a84bb43e",
+      "modified": false
+    },
+    {
+      "institution": "POSTECH",
+      "file": "assets/institutions/postech.png",
+      "sourcePage": "https://www.postech.ac.kr/eng/about/logo.do",
+      "assetUrl": "https://www.postech.ac.kr/_res/postech/kor/img/sub/postech_default_logo.png",
+      "sha256": "f449fa29b4a481dc531230f29739741fcc304cc4b2550cca7320d1bd298b9d06",
+      "modified": false
+    },
+    {
+      "institution": "East China University of Science and Technology",
+      "file": "assets/institutions/ecust.png",
+      "sourcePage": "https://www.ecust.edu.cn/",
+      "assetUrl": "https://www.ecust.edu.cn/_upload/tpl/00/2c/44/template44/images/logo.png",
+      "sha256": "12c104ce3be223653556acec5498865a37280648571ddd52f1138f07840c7503",
+      "modified": false
+    },
+    {
+      "institution": "Zhejiang University",
+      "file": "assets/institutions/zhejiang.png",
+      "sourcePage": "https://www.zju.edu.cn/572/main.htm",
+      "assetUrl": "https://www.zju.edu.cn/_upload/article/images/c3/98/1fb1d281492eb477a098ef7a2901/05966b26-ab45-470d-94c1-99b1e02d12f4.png",
+      "sha256": "dc914cc634bdcd9b871c84686817c12287c6bafd309f083a1054040aee806fca",
+      "modified": false
+    }
+  ]
+}
