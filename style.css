@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Xiaolai';
-  src: url('assets/fonts/xiaolai-regular.woff2?v=20260922-visitors') format('woff2');
+  src: url('assets/fonts/xiaolai-regular.woff2?v=20261005-miccai') format('woff2');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -181,6 +181,12 @@ body[data-page] main > .research-section { border-top: 1px solid var(--line); pa
 .photo-card figcaption { padding: 14px 7px 0; }
 .photo-card figcaption strong { display: block; font-family: var(--hand); font-size: 22px; line-height: 1.4; font-weight: 400; }
 .photo-card figcaption > span { display: block; color: var(--muted); font-size: 11px; line-height: 1.75; margin-top: 5px; }
+.conference-album { margin-top: 42px; padding-bottom: 38px; border-bottom: 1px dashed var(--line); }
+.conference-heading h3 { font-family: var(--hand); font-size: 29px; line-height: 1.4; font-weight: 400; color: var(--green); }
+.conference-heading p { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.conference-gallery { margin-top: 27px; }
+.conference-group { grid-column: 1 / -1; width: min(100%, 840px); justify-self: center; }
+.conference-group .photo-button img { aspect-ratio: 4 / 3; }
 .cat-sticker { position: absolute; top: -15px; right: 18px; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--note); border: 1px solid var(--line); font-size: 23px; transform: rotate(15deg); pointer-events: none; }
 .photo-dialog { width: min(940px, calc(100vw - 40px)); max-width: none; max-height: calc(100dvh - 32px); margin: auto; padding: 23px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); box-shadow: 0 25px 90px #0005; overflow: auto; }
 body.photo-open { overflow: hidden; }
@@ -432,6 +438,7 @@ html:lang(fr) .note-body { font-size: 21px; }
   .gallery-copy .handwritten { margin-top: 12px; }
   .photo-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 27px 19px; margin-top: 28px; padding-inline: 3px; }
   .photo-card, .photo-card-wide { grid-column: auto; padding: 8px 8px 14px; }
+  .conference-group { grid-column: 1 / -1; }
   .photo-card-cat { grid-column: 1 / -1; width: min(100%, 320px); justify-self: center; }
   .photo-card figcaption { padding: 11px 4px 0; }
   .photo-card figcaption strong { font-size: 20px; }

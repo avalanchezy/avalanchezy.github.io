@@ -1,5 +1,17 @@
 # Personal photo exports
 
+## MICCAI 2026
+
+Added on 5 October 2026 from three photographs supplied by Yi Zhu:
+
+- `miccai-2026-talk.webp`: `微信图片_2026-10-05_183054_754.jpg` — conference presentation.
+- `miccai-2026-award.webp`: `微信图片_2026-10-05_183112_042.jpg` — award ceremony.
+- `miccai-2026-group.webp`: `微信图片_2026-10-05_183128_164.jpg` — STS 2026 group photograph.
+
+These are 2048 × 1536 WebP exports (quality 88), preserving the full frame, faces, certificates and projected slides. Only image orientation, size and encoding were normalized; no generative edits or retouching were applied. The three exports total about 955 KiB and reuse the site's photo dialog.
+
+## Earlier photographs
+
 These five photographs were supplied by Yi Zhu and edited with the built-in image generation tool for crop, exposure, color and subtle portrait retouch. The edits were visually checked against the supplied photographs. Identity, clothing, pose and actual settings were requested to remain unchanged. WebP files are optimized web exports at the edited image dimensions.
 
 The first talk edit was rejected because it changed the scene; `talk.webp` uses the conservative second edit from the original photograph. No rejected output is published.
