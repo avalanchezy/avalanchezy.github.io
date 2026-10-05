@@ -2,7 +2,7 @@
 
 ## Photo placement and ISBI 2026
 
-The About gallery contains `sun`, `england`, `cat` and `rome`. Conference photographs live on Publications: the three MICCAI photographs, `isbi-2026.webp`, and `talk.webp` (the Centrale Lyon keynote, as identified by Yi Zhu).
+The About gallery contains `sun`, `england`, `cat` and `rome`. Conference photographs live on Publications: the three MICCAI photographs, `isbi-2026.webp`, and `talk.webp` (the Centrale Lyon invited talk, as identified by Yi Zhu).
 
 `isbi-2026.webp` is a full-frame 1536 × 2048 WebP export (quality 88) of `微信图片_20261005195825_8_928.jpg`, supplied on 5 October 2026. Only orientation, dimensions and encoding were normalized; the photograph and poster content were not retouched.
 
