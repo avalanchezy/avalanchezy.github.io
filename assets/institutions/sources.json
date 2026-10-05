@@ -58,6 +58,22 @@
       "assetUrl": "https://www.zju.edu.cn/_upload/article/images/c3/98/1fb1d281492eb477a098ef7a2901/05966b26-ab45-470d-94c1-99b1e02d12f4.png",
       "sha256": "dc914cc634bdcd9b871c84686817c12287c6bafd309f083a1054040aee806fca",
       "modified": false
+    },
+    {
+      "institution": "La Spiruline de Julie",
+      "file": "assets/institutions/spiruline-de-julie.png",
+      "sourcePage": "https://www.spirulinedejulie.com/",
+      "assetUrl": "https://www.spirulinedejulie.com/wp-content/themes/spiru/assets/img/logo.png",
+      "retrieved": "2026-10-05",
+      "modified": false
+    },
+    {
+      "institution": "La Spiruline de Julie",
+      "file": "assets/institutions/spiruline-de-julie-white.png",
+      "sourcePage": "https://www.spirulinedejulie.com/",
+      "assetUrl": "https://www.spirulinedejulie.com/wp-content/themes/spiru/assets/img/logo-white.png",
+      "retrieved": "2026-10-05",
+      "modified": false
     }
   ]
 }

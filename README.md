@@ -2,7 +2,7 @@
 
 ## Profile details
 
-Home includes a three-part research overview linked to Publications. Education uses a wider timeline, a city trail and official institution logos; research internships also show their host institution. The seven official logo assets and their source URLs/checksums are recorded in `assets/institutions/sources.json`. Logo artwork and colors remain intact on white backgrounds in both themes; only SVG whitespace was normalized. Earlier school entries remain text-only because a downloadable official emblem could not be verified.
+Home includes a three-part research overview linked to Publications. Education uses a wider timeline, a city trail and official institution logos; internships also show their host organization. Official logo assets and their source URLs are recorded in `assets/institutions/sources.json`. La Spiruline de Julie links to its official website and uses the original color and white-lettered logo variants in light and dark mode, respectively. Institution logos adapt to the page theme through CSS; source artwork is unchanged apart from normalized SVG whitespace. Earlier school entries remain text-only because a downloadable official emblem could not be verified.
 
 About links to the author's ORCID and CV. Contact offers a localized copy-email button; if clipboard access is unavailable or denied, it selects the address for manual copying. The mailto link works without JavaScript. Run `node tests/contact-copy.cjs` with the same Playwright environment described below to check copying, fallback, pending state and language changes.
 

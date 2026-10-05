@@ -312,6 +312,12 @@ body.dark .institution-logo { filter: grayscale(1) invert(1) brightness(1.5); op
 .experience-header { min-height: 37px; }
 .experience-affiliation { display: grid; grid-template-columns: 88px minmax(0, 1fr); align-items: center; gap: 14px; margin-top: 15px; min-height: 32px; }
 .experience-affiliation .experience-organization { margin-top: 0; color: var(--ink); }
+.experience-affiliation-spiruline { grid-template-columns: 112px minmax(0, 1fr); }
+.institution-logo-spiruline { width: 112px; height: 32px; mix-blend-mode: normal; }
+.spiruline-logo-dark { display: none; }
+body.dark .institution-logo-spiruline { filter: none; opacity: 1; mix-blend-mode: normal; }
+body.dark .spiruline-logo-light { display: none; }
+body.dark .spiruline-logo-dark { display: block; }
 .institution-logo-zhejiang img { flex-shrink: 0; width: 53px; height: auto; max-width: none; }
 .experience-more { margin-top: 25px; color: var(--green); }
 
