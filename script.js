@@ -225,7 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     document.getElementById('photo-close').addEventListener('click', () => photoDialog.close());
     document.getElementById('photo-shuffle').addEventListener('click', () => {
-        showPhoto(photoButtons[randomIndex(photoButtons)]);
+        const pagePhotos = photoButtons.filter(button => button.closest('[data-page]').dataset.page === activePage);
+        showPhoto(pagePhotos[randomIndex(pagePhotos)]);
     });
     photoDialog.addEventListener('click', event => {
         if (event.target === photoDialog) photoDialog.close();
